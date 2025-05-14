@@ -1,9 +1,8 @@
-
 import React, { useState } from 'react';
 import Mascot from '../components/Mascot';
 import { Button } from '../components/ui/button';
 import { Textarea } from '../components/ui/textarea';
-import { MessageSquare, Mic, VolumeUp, ArrowRightLeft } from 'lucide-react';
+import { MessageSquare, Mic, Volume2, ArrowRightLeft } from 'lucide-react';
 
 const TranslatorPage: React.FC = () => {
   const [inputText, setInputText] = useState('');
@@ -105,7 +104,7 @@ const TranslatorPage: React.FC = () => {
                 {translateDirection === 'tupi-pt' ? 'Tradução para Português' : 'Tradução para Tupi'}:
               </label>
               <Button size="sm" variant="ghost" onClick={playSpeech} className="text-tekoha-interactive">
-                <VolumeUp className="h-5 w-5" />
+                <Volume2 className="h-5 w-5" />
               </Button>
             </div>
             <div className="bg-tekoha-background/60 rounded-xl p-4 border border-tekoha-secondary/30">

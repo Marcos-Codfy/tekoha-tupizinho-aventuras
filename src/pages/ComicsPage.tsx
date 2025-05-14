@@ -1,8 +1,7 @@
-
 import React, { useState } from 'react';
 import { Button } from '../components/ui/button';
 import { Card, CardContent } from '../components/ui/card';
-import { BookOpen, ChevronLeft, ChevronRight, VolumeUp } from 'lucide-react';
+import { BookOpen, ChevronLeft, ChevronRight, Volume2 } from 'lucide-react';
 import Mascot from '../components/Mascot';
 
 interface ComicPage {
@@ -213,7 +212,7 @@ const ComicsPage: React.FC = () => {
                     handlePlayAudio(dialogue.original);
                   }}
                 >
-                  <VolumeUp className="h-4 w-4 text-tekoha-secondary" />
+                  <Volume2 className="h-4 w-4 text-tekoha-secondary" />
                 </Button>
               </div>
               <div className="text-xs text-tekoha-secondary mt-1 text-right">

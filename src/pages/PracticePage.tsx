@@ -62,7 +62,7 @@ const PracticePage: React.FC = () => {
     // Add user message
     const newMessages = [
       ...messages,
-      { text: input, sender: 'user' }
+      { text: input, sender: 'user' as const }
     ];
     setMessages(newMessages);
     setInput('');
@@ -80,7 +80,7 @@ const PracticePage: React.FC = () => {
             ...newMessages,
             { 
               text: response.tupi, 
-              sender: 'mascot', 
+              sender: 'mascot' as const, 
               translated: response.pt 
             }
           ]);
@@ -95,7 +95,7 @@ const PracticePage: React.FC = () => {
           ...newMessages,
           { 
             text: 'Xe n\'a înhéeng kuábi. Amboé taîné ndébe?', 
-            sender: 'mascot', 
+            sender: 'mascot' as const, 
             translated: 'Não entendi. Posso te ensinar algo?' 
           }
         ]);

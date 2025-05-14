@@ -1,9 +1,8 @@
-
 import React, { useState } from 'react';
 import { Input } from '../components/ui/input';
 import { Button } from '../components/ui/button';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '../components/ui/tabs';
-import { BookMarked, Search, VolumeUp } from 'lucide-react';
+import { BookMarked, Search, Volume2 } from 'lucide-react';
 import Mascot from '../components/Mascot';
 
 interface GlossaryItem {
@@ -186,7 +185,7 @@ const GlossaryCard: React.FC<GlossaryCardProps> = ({ item, onPlayAudio }) => {
             onClick={() => onPlayAudio(item.tupiWord)}
             className="text-tekoha-accent"
           >
-            <VolumeUp className="h-5 w-5" />
+            <Volume2 className="h-5 w-5" />
           </Button>
         </div>
         <p className="text-white mt-1">{item.ptTranslation}</p>
