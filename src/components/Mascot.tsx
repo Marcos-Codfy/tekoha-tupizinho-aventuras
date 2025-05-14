@@ -46,9 +46,9 @@ const Mascot: React.FC<MascotProps> = ({
   };
   
   const sizeClasses = {
-    'sm': isMobile ? 'w-12 h-12' : 'w-16 h-16',
-    'md': isMobile ? 'w-16 h-16' : 'w-24 h-24',
-    'lg': isMobile ? 'w-24 h-24' : 'w-32 h-32'
+    'sm': isMobile ? 'w-8 h-8' : 'w-10 h-10',
+    'md': isMobile ? 'w-12 h-12' : 'w-16 h-16',
+    'lg': isMobile ? 'w-16 h-16' : 'w-24 h-24'
   };
 
   const handleClick = () => {
@@ -58,7 +58,7 @@ const Mascot: React.FC<MascotProps> = ({
   return isVisible ? (
     <div className={`mascot-container ${positionClasses[position]}`}>
       {showMessage && message && (
-        <div className="mascot-speech mb-3 mr-4 animate-fade-in max-w-[200px] md:max-w-xs">
+        <div className="mascot-speech mb-2 mr-2 animate-fade-in max-w-[180px] md:max-w-xs">
           <p className="text-xs md:text-sm">{message}</p>
         </div>
       )}
@@ -67,7 +67,7 @@ const Mascot: React.FC<MascotProps> = ({
         onClick={handleClick}
       >
         <img 
-          src="/lovable-uploads/41076821-a84a-42bb-8d32-253008ac2a21.png" 
+          src="/lovable-uploads/cc714f54-db55-4def-8d46-4721adaffc91.png" 
           alt="Tupizinho mascot"
           className="w-full h-full object-contain"
         />

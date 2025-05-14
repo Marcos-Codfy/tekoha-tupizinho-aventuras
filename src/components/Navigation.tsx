@@ -69,10 +69,10 @@ const Navigation: React.FC = () => {
         })}
         
         <div className="flex flex-col items-center justify-center relative">
-          {/* Tupizinho mascote posicionado ao lado do botão de configurações */}
-          <div className={`absolute ${isMobile ? '-top-12 -right-1 w-12 h-12' : '-top-14 w-14 h-14'} flex items-center justify-center`}>
+          {/* Tupizinho mascote menor posicionado acima do botão de configurações */}
+          <div className="absolute -top-8 right-0 w-8 h-8 flex items-center justify-center">
             <img 
-              src="/lovable-uploads/41076821-a84a-42bb-8d32-253008ac2a21.png" 
+              src="/lovable-uploads/cc714f54-db55-4def-8d46-4721adaffc91.png" 
               alt="Tupizinho mascot" 
               className="w-full h-full object-contain animate-bounce hover:animate-none cursor-pointer"
             />
