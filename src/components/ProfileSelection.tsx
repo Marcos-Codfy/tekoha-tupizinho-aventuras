@@ -4,7 +4,11 @@ import { useNavigate } from 'react-router-dom';
 import { UserCircle2, Stethoscope, BookOpen, GraduationCap, Heart, Users } from 'lucide-react';
 import Mascot from './Mascot';
 
-const ProfileSelection: React.FC = () => {
+interface ProfileSelectionProps {
+  onProfileSelect?: (profileId: string) => void;
+}
+
+const ProfileSelection: React.FC<ProfileSelectionProps> = ({ onProfileSelect }) => {
   const navigate = useNavigate();
   const [selectedProfile, setSelectedProfile] = useState<string | null>(null);
   const [mascotMessage, setMascotMessage] = useState('Olá! Eu sou o Tupizinho! Selecione seu perfil para continuarmos nossa jornada!');
@@ -45,6 +49,11 @@ const ProfileSelection: React.FC = () => {
   const handleProfileSelect = (profileId: string, message: string) => {
     setSelectedProfile(profileId);
     setMascotMessage(message);
+    
+    // Call the onProfileSelect callback if provided
+    if (onProfileSelect) {
+      onProfileSelect(profileId);
+    }
     
     // Delay navigation to show the mascot message
     setTimeout(() => {
