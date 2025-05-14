@@ -1,10 +1,12 @@
 
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useIsMobile } from '@/hooks/use-mobile';
 
 const SplashScreen: React.FC = () => {
   const navigate = useNavigate();
   const [showMascot, setShowMascot] = useState(false);
+  const isMobile = useIsMobile();
 
   useEffect(() => {
     // Show mascot with animation after a short delay
@@ -25,17 +27,17 @@ const SplashScreen: React.FC = () => {
 
   return (
     <div className="fixed inset-0 flex flex-col items-center justify-center bg-tekoha-background z-50">
-      <div className="text-center">
-        <h1 className="text-6xl font-bold text-tekoha-accent mb-8 tracking-wider animate-fade-in font-comic">
+      <div className="text-center px-4">
+        <h1 className="text-4xl md:text-6xl font-bold text-tekoha-accent mb-8 tracking-wider animate-fade-in font-comic">
           TEKOHÁ
         </h1>
         
         {showMascot && (
           <div className="transition-all duration-1000 animate-mascot-appear">
             <img 
-              src="/lovable-uploads/9620d32b-42f8-4faa-8659-e65d986e769b.png" 
+              src="/lovable-uploads/41076821-a84a-42bb-8d32-253008ac2a21.png" 
               alt="Tupizinho mascot" 
-              className="w-40 h-40 mx-auto animate-float"
+              className={`${isMobile ? 'w-32 h-32' : 'w-40 h-40'} mx-auto animate-float object-contain`}
             />
           </div>
         )}

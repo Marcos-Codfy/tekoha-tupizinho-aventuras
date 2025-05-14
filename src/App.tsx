@@ -57,7 +57,7 @@ const App = () => {
         <Sonner />
         <BrowserRouter>
           {showSplash && window.location.pathname === '/' && <SplashScreen />}
-          <div className="pb-20"> {/* Add padding to bottom for navigation bar */}
+          <div className="min-h-screen pb-20"> {/* Add padding to bottom for navigation bar */}
             <Routes>
               <Route path="/" element={showSplash ? null : <ProfileSelection onProfileSelect={handleProfileSelect} />} />
               <Route path="/profile-selection" element={<ProfileSelection onProfileSelect={handleProfileSelect} />} />

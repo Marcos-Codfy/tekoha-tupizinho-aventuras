@@ -1,5 +1,6 @@
 
 import React, { useState, useEffect } from 'react';
+import { useIsMobile } from '@/hooks/use-mobile';
 
 interface MascotProps {
   position?: 'bottom-right' | 'bottom-left' | 'top-right' | 'top-left' | 'center';
@@ -16,6 +17,7 @@ const Mascot: React.FC<MascotProps> = ({
 }) => {
   const [isVisible, setIsVisible] = useState(!!message);
   const [showMessage, setShowMessage] = useState(!!message);
+  const isMobile = useIsMobile();
 
   useEffect(() => {
     if (message) {
@@ -44,9 +46,9 @@ const Mascot: React.FC<MascotProps> = ({
   };
   
   const sizeClasses = {
-    'sm': 'w-16 h-16',
-    'md': 'w-24 h-24',
-    'lg': 'w-32 h-32'
+    'sm': isMobile ? 'w-12 h-12' : 'w-16 h-16',
+    'md': isMobile ? 'w-16 h-16' : 'w-24 h-24',
+    'lg': isMobile ? 'w-24 h-24' : 'w-32 h-32'
   };
 
   const handleClick = () => {
@@ -56,8 +58,8 @@ const Mascot: React.FC<MascotProps> = ({
   return isVisible ? (
     <div className={`mascot-container ${positionClasses[position]}`}>
       {showMessage && message && (
-        <div className="mascot-speech mb-3 mr-4 animate-fade-in">
-          <p className="text-sm">{message}</p>
+        <div className="mascot-speech mb-3 mr-4 animate-fade-in max-w-[200px] md:max-w-xs">
+          <p className="text-xs md:text-sm">{message}</p>
         </div>
       )}
       <div 

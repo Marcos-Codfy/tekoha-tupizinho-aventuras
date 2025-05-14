@@ -47,11 +47,19 @@
     --sidebar-ring: 341 62% 40%;
   }
 
+  html, body {
+    @apply h-full w-full m-0 p-0 overflow-x-hidden;
+  }
+
   body {
-    @apply bg-tekoha-background text-foreground font-rounded;
+    @apply bg-tekoha-background text-foreground font-rounded min-h-screen;
     background-image: radial-gradient(circle at top left, rgba(225, 94, 50, 0.1) 0%, transparent 40%),
                      radial-gradient(circle at bottom right, rgba(192, 210, 62, 0.1) 0%, transparent 40%);
     background-attachment: fixed;
+  }
+
+  #root {
+    @apply min-h-screen flex flex-col;
   }
 }
 
@@ -61,19 +69,19 @@
   }
   
   .tekoha-button {
-    @apply bg-tekoha-secondary hover:bg-tekoha-secondary/90 text-white font-medium rounded-full py-3 px-6 transition-all duration-200 flex items-center justify-center gap-2 shadow-md hover:shadow-lg focus:ring-2 focus:ring-tekoha-accent/50 focus:outline-none;
+    @apply bg-tekoha-secondary hover:bg-tekoha-secondary/90 text-white font-medium rounded-full py-2 md:py-3 px-4 md:px-6 transition-all duration-200 flex items-center justify-center gap-2 shadow-md hover:shadow-lg focus:ring-2 focus:ring-tekoha-accent/50 focus:outline-none;
   }
   
   .tekoha-button-outline {
-    @apply border-2 border-tekoha-secondary bg-transparent hover:bg-tekoha-secondary/10 text-tekoha-secondary hover:text-white font-medium rounded-full py-2.5 px-5 transition-all duration-200;
+    @apply border-2 border-tekoha-secondary bg-transparent hover:bg-tekoha-secondary/10 text-tekoha-secondary hover:text-white font-medium rounded-full py-2 px-4 md:py-2.5 md:px-5 transition-all duration-200;
   }
   
   .tekoha-input {
-    @apply bg-tekoha-background/60 border-2 border-tekoha-secondary/30 rounded-xl p-3 focus:border-tekoha-secondary focus:outline-none focus:ring-2 focus:ring-tekoha-accent/50 text-white placeholder:text-white/50;
+    @apply bg-tekoha-background/60 border-2 border-tekoha-secondary/30 rounded-xl p-2 md:p-3 focus:border-tekoha-secondary focus:outline-none focus:ring-2 focus:ring-tekoha-accent/50 text-white placeholder:text-white/50;
   }
   
   .profile-card {
-    @apply flex flex-col items-center justify-center gap-3 bg-tekoha-secondary/20 hover:bg-tekoha-secondary/30 p-5 rounded-xl transition-all duration-300 cursor-pointer border-2 border-transparent hover:border-tekoha-accent;
+    @apply flex flex-col items-center justify-center gap-2 md:gap-3 bg-tekoha-secondary/20 hover:bg-tekoha-secondary/30 p-3 md:p-5 rounded-xl transition-all duration-300 cursor-pointer border-2 border-transparent hover:border-tekoha-accent;
   }
 
   .mascot-container {
@@ -81,23 +89,34 @@
   }
 
   .mascot-speech {
-    @apply bg-white text-tekoha-background p-4 rounded-2xl shadow-lg max-w-xs relative animate-fade-in;
+    @apply bg-white text-tekoha-background p-3 md:p-4 rounded-2xl shadow-lg max-w-xs relative animate-fade-in;
   }
   
   .mascot-speech:after {
     content: '';
     @apply absolute bottom-[-10px] right-10 w-0 h-0 border-l-[10px] border-l-transparent border-t-[15px] border-t-white border-r-[10px] border-r-transparent;
   }
+
+  .content-container {
+    @apply w-full max-w-screen-xl mx-auto px-4 sm:px-6 md:px-8 pb-20 pt-4;
+  }
 }
 
 /* Custom spinner styles */
 .loading-spinner {
-  width: 50px;
-  height: 50px;
+  width: 40px;
+  height: 40px;
   border-radius: 50%;
   background: conic-gradient(#0000 10%, #e15e32);
   -webkit-mask: radial-gradient(farthest-side,#0000 calc(100% - 8px),#000 0);
   animation: spin 1s infinite linear;
+}
+
+@media (min-width: 768px) {
+  .loading-spinner {
+    width: 50px;
+    height: 50px;
+  }
 }
 
 @keyframes spin {
