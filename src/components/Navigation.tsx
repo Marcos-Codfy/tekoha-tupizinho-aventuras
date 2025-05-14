@@ -66,15 +66,25 @@ const Navigation: React.FC = () => {
           )
         })}
         
-        <Link 
-          to="/settings"
-          className="flex flex-col items-center justify-center p-2 rounded-lg text-white/70 hover:text-white"
-        >
-          <div className="p-2 rounded-full">
-            <Settings className="h-6 w-6" />
+        <div className="flex flex-col items-center justify-center relative">
+          {/* Tupizinho mascote posicionado acima do botão de configurações */}
+          <div className="absolute -top-14 w-14 h-14 flex items-center justify-center">
+            <img 
+              src="/lovable-uploads/41076821-a84a-42bb-8d32-253008ac2a21.png" 
+              alt="Tupizinho mascot" 
+              className="w-full h-full object-contain animate-bounce hover:animate-none cursor-pointer"
+            />
           </div>
-          <span className="text-xs mt-1">Config</span>
-        </Link>
+          <Link 
+            to="/settings"
+            className="flex flex-col items-center justify-center p-2 rounded-lg text-white/70 hover:text-white mt-2"
+          >
+            <div className="p-2 rounded-full">
+              <Settings className="h-6 w-6" />
+            </div>
+            <span className="text-xs mt-1">Config</span>
+          </Link>
+        </div>
       </nav>
     </div>
   );

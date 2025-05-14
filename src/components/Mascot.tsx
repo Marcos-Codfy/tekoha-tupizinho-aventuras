@@ -65,7 +65,7 @@ const Mascot: React.FC<MascotProps> = ({
         onClick={handleClick}
       >
         <img 
-          src="/lovable-uploads/9620d32b-42f8-4faa-8659-e65d986e769b.png" 
+          src="/lovable-uploads/41076821-a84a-42bb-8d32-253008ac2a21.png" 
           alt="Tupizinho mascot"
           className="w-full h-full object-contain"
         />
