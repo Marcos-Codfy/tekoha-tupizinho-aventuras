@@ -56,19 +56,34 @@ const Mascot: React.FC<MascotProps> = ({
   };
 
   return isVisible ? (
-    <div className={`mascot-container ${positionClasses[position]}`}>
+    <div 
+      className={`mascot-container ${positionClasses[position]}`}
+      role="complementary" 
+      aria-live="polite"
+    >
       {showMessage && message && (
-        <div className="mascot-speech mb-2 mr-2 animate-fade-in max-w-[180px] md:max-w-xs">
+        <div 
+          className="mascot-speech mb-2 mr-2 animate-fade-in max-w-[180px] md:max-w-xs"
+          role="status"
+        >
           <p className="text-xs md:text-sm">{message}</p>
         </div>
       )}
       <div 
         className={`${sizeClasses[size]} cursor-pointer animate-mascot-appear hover:scale-105 transition-transform duration-200`}
         onClick={handleClick}
+        onKeyDown={(e) => {
+          if (e.key === 'Enter' || e.key === ' ') {
+            handleClick();
+          }
+        }}
+        role="button"
+        tabIndex={0}
+        aria-label="Interagir com o mascote Tupizinho"
       >
         <img 
           src="/lovable-uploads/cc714f54-db55-4def-8d46-4721adaffc91.png" 
-          alt="Tupizinho mascot"
+          alt="Tupizinho, o mascote do aplicativo Tekoha"
           className="w-full h-full object-contain"
         />
       </div>

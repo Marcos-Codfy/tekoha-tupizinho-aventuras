@@ -17,32 +17,37 @@ const ProfileSelection: React.FC<ProfileSelectionProps> = ({ onProfileSelect }) 
     { 
       id: 'health', 
       name: 'Trabalhador da saúde', 
-      icon: <Stethoscope className="h-12 w-12 text-tekoha-interactive" />,
-      message: 'Ajudando a cuidar da saúde de nossa comunidade!'
+      icon: <Stethoscope className="h-12 w-12 text-tekoha-interactive" aria-hidden="true" />,
+      message: 'Ajudando a cuidar da saúde de nossa comunidade!',
+      ariaLabel: 'Selecionar perfil de trabalhador da saúde'
     },
     { 
       id: 'teacher', 
       name: 'Professor', 
-      icon: <BookOpen className="h-12 w-12 text-tekoha-interactive" />,
-      message: 'Compartilhando conhecimento e preservando nossa cultura!'
+      icon: <BookOpen className="h-12 w-12 text-tekoha-interactive" aria-hidden="true" />,
+      message: 'Compartilhando conhecimento e preservando nossa cultura!',
+      ariaLabel: 'Selecionar perfil de professor'
     },
     { 
       id: 'student', 
       name: 'Estudante', 
-      icon: <GraduationCap className="h-12 w-12 text-tekoha-interactive" />,
-      message: 'Aprendendo sobre nossa língua e tradições!'
+      icon: <GraduationCap className="h-12 w-12 text-tekoha-interactive" aria-hidden="true" />,
+      message: 'Aprendendo sobre nossa língua e tradições!',
+      ariaLabel: 'Selecionar perfil de estudante'
     },
     { 
       id: 'social', 
       name: 'Assistente social', 
-      icon: <Heart className="h-12 w-12 text-tekoha-interactive" />,
-      message: 'Auxiliando no bem-estar de nossa comunidade!'
+      icon: <Heart className="h-12 w-12 text-tekoha-interactive" aria-hidden="true" />,
+      message: 'Auxiliando no bem-estar de nossa comunidade!',
+      ariaLabel: 'Selecionar perfil de assistente social'
     },
     { 
       id: 'indigenous', 
       name: 'Indígena', 
-      icon: <Users className="h-12 w-12 text-tekoha-interactive" />,
-      message: 'Porã! Bem-vindo de volta à sua comunidade!'
+      icon: <Users className="h-12 w-12 text-tekoha-interactive" aria-hidden="true" />,
+      message: 'Porã! Bem-vindo de volta à sua comunidade!',
+      ariaLabel: 'Selecionar perfil indígena'
     }
   ];
 
@@ -62,18 +67,31 @@ const ProfileSelection: React.FC<ProfileSelectionProps> = ({ onProfileSelect }) 
   };
 
   return (
-    <div className="min-h-screen flex flex-col p-6">
+    <div className="min-h-screen flex flex-col p-6" role="main">
       <div className="flex-1 flex flex-col items-center justify-center">
         <h1 className="text-3xl font-bold text-tekoha-accent mb-10 text-center font-comic">
           Escolha seu Perfil
         </h1>
         
-        <div className="grid grid-cols-2 md:grid-cols-3 gap-6 max-w-3xl animate-fade-in">
+        <div 
+          className="grid grid-cols-2 md:grid-cols-3 gap-6 max-w-3xl animate-fade-in"
+          role="group" 
+          aria-label="Opções de perfil"
+        >
           {profiles.map((profile) => (
             <div
               key={profile.id}
               className={`profile-card ${selectedProfile === profile.id ? 'border-tekoha-accent shadow-lg scale-105' : ''}`}
               onClick={() => handleProfileSelect(profile.id, profile.message)}
+              onKeyDown={(e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                  handleProfileSelect(profile.id, profile.message);
+                }
+              }}
+              role="button"
+              tabIndex={0}
+              aria-label={profile.ariaLabel}
+              aria-selected={selectedProfile === profile.id}
             >
               {profile.icon}
               <p className="text-white text-center font-medium">{profile.name}</p>

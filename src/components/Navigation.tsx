@@ -13,42 +13,52 @@ const Navigation: React.FC = () => {
       id: 'home',
       name: 'Aprender', 
       path: '/home', 
-      icon: <BookOpen className="h-5 w-5 md:h-6 md:w-6" /> 
+      icon: <BookOpen className="h-5 w-5 md:h-6 md:w-6" aria-hidden="true" />,
+      ariaLabel: 'Ir para a página de aprendizagem'
     },
     { 
       id: 'translator',
       name: 'Tradutor', 
       path: '/translator', 
-      icon: <MessageSquare className="h-5 w-5 md:h-6 md:w-6" /> 
+      icon: <MessageSquare className="h-5 w-5 md:h-6 md:w-6" aria-hidden="true" />,
+      ariaLabel: 'Ir para o tradutor'
     },
     { 
       id: 'glossary',
       name: 'Glossário', 
       path: '/glossary', 
-      icon: <BookMarked className="h-5 w-5 md:h-6 md:w-6" /> 
+      icon: <BookMarked className="h-5 w-5 md:h-6 md:w-6" aria-hidden="true" />,
+      ariaLabel: 'Ir para o glossário'
     },
     { 
       id: 'games',
       name: 'Jogos', 
       path: '/games', 
-      icon: <Gamepad2 className="h-5 w-5 md:h-6 md:w-6" /> 
+      icon: <Gamepad2 className="h-5 w-5 md:h-6 md:w-6" aria-hidden="true" />,
+      ariaLabel: 'Ir para os jogos'
     },
     { 
       id: 'practice',
       name: 'Prática', 
       path: '/practice', 
-      icon: <Mic className="h-5 w-5 md:h-6 md:w-6" /> 
+      icon: <Mic className="h-5 w-5 md:h-6 md:w-6" aria-hidden="true" />,
+      ariaLabel: 'Ir para a página de prática'
     },
     { 
       id: 'achievements',
       name: 'Conquistas', 
       path: '/achievements', 
-      icon: <Trophy className="h-5 w-5 md:h-6 md:w-6" /> 
+      icon: <Trophy className="h-5 w-5 md:h-6 md:w-6" aria-hidden="true" />,
+      ariaLabel: 'Ir para as conquistas'
     }
   ];
 
   return (
-    <div className="fixed bottom-0 left-0 right-0 bg-tekoha-background border-t-2 border-tekoha-secondary/30 z-40">
+    <div 
+      className="fixed bottom-0 left-0 right-0 bg-tekoha-background border-t-2 border-tekoha-secondary/30 z-40"
+      role="navigation" 
+      aria-label="Menu principal"
+    >
       <nav className={`flex justify-between items-center ${isMobile ? 'px-1 py-1' : 'px-2 py-1'}`}>
         {navItems.map((item) => {
           const isActive = location.pathname === item.path;
@@ -56,6 +66,8 @@ const Navigation: React.FC = () => {
             <Link 
               key={item.id} 
               to={item.path}
+              aria-label={item.ariaLabel}
+              aria-current={isActive ? 'page' : undefined}
               className={`flex flex-col items-center justify-center ${isMobile ? 'p-1' : 'p-2'} rounded-lg ${
                 isActive ? 'text-tekoha-accent' : 'text-white/70 hover:text-white'
               }`}
@@ -69,20 +81,23 @@ const Navigation: React.FC = () => {
         })}
         
         <div className="flex flex-col items-center justify-center relative">
-          {/* Tupizinho mascote menor posicionado acima do botão de configurações */}
-          <div className="absolute -top-8 right-0 w-8 h-8 flex items-center justify-center">
+          <div 
+            className="absolute -top-8 right-0 w-8 h-8 flex items-center justify-center"
+            aria-hidden="true"
+          >
             <img 
               src="/lovable-uploads/cc714f54-db55-4def-8d46-4721adaffc91.png" 
-              alt="Tupizinho mascot" 
+              alt="Tupizinho mascote" 
               className="w-full h-full object-contain animate-bounce hover:animate-none cursor-pointer"
             />
           </div>
           <Link 
             to="/settings"
+            aria-label="Configurações do aplicativo"
             className={`flex flex-col items-center justify-center ${isMobile ? 'p-1' : 'p-2'} rounded-lg text-white/70 hover:text-white mt-2`}
           >
             <div className={`${isMobile ? 'p-1' : 'p-2'} rounded-full`}>
-              <Settings className="h-5 w-5 md:h-6 md:w-6" />
+              <Settings className="h-5 w-5 md:h-6 md:w-6" aria-hidden="true" />
             </div>
             <span className={`${isMobile ? 'text-[10px]' : 'text-xs'} mt-1`}>Config</span>
           </Link>
