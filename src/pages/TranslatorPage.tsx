@@ -11,45 +11,94 @@ const TranslatorPage: React.FC = () => {
   const [translateDirection, setTranslateDirection] = useState<'tupi-pt' | 'pt-tupi'>('tupi-pt');
   const [mascotMessage, setMascotMessage] = useState('Posso te ajudar a traduzir frases em Tupi para Português e vice-versa!');
 
-  // Mock translation function
+  // Dicionário ampliado de traduções
+  const mockTupiToPt: Record<string, string> = {
+    'kunhã poranga': 'mulher bonita',
+    'nde porã': 'você é bonito/bom',
+    'xe py\'a pe': 'no meu coração',
+    'paranã': 'rio grande, mar',
+    'oka': 'casa',
+    'ara porã': 'dia bom, bom dia',
+    'pytuna porã': 'boa noite',
+    'xe potar nde': 'eu te quero',
+    'îasy': 'lua',
+    'kuarasy': 'sol',
+    'ybaka': 'céu',
+    'guyrá': 'pássaro',
+    'îakaré': 'jacaré',
+    'îaguara': 'onça',
+    'y': 'água',
+    'kaá': 'mato, floresta',
+    'abá': 'homem, pessoa',
+    'kurumĩ': 'menino',
+    'kunhãtaĩ': 'menina',
+  };
+
+  const mockPtToTupi: Record<string, string> = {
+    'bom dia': 'ara porã',
+    'água boa': 'y porã',
+    'eu te amo': 'xe ro-payxu',
+    'obrigado': 'aguyjewete',
+    'mulher': 'kunhã',
+    'homem': 'abá',
+    'menino': 'kurumĩ',
+    'menina': 'kunhãtaĩ',
+    'casa': 'oka',
+    'rio': 'paranã',
+    'floresta': 'kaá',
+    'sol': 'kuarasy',
+    'lua': 'îasy',
+    'céu': 'ybaka',
+    'coração': 'py\'a',
+    'água': 'y',
+    'fogo': 'tatá',
+    'terra': 'yby',
+    'pássaro': 'guyrá',
+    'onça': 'îaguara',
+  };
+
+  // Tradução
   const translateText = () => {
     if (!inputText.trim()) {
       setMascotMessage('Digite algum texto para eu traduzir!');
       return;
     }
 
-    // Simulating translation with mock responses
-    const mockTupiToPt: Record<string, string> = {
-      'kunhã poranga': 'mulher bonita',
-      'nde porã': 'você é bonito/bom',
-      'xe py\'a pe': 'no meu coração',
-      'paranã': 'rio grande, mar',
-    };
-
-    const mockPtToTupi: Record<string, string> = {
-      'bom dia': 'ara porã',
-      'água boa': 'y porã',
-      'eu te amo': 'xe ro-payxu',
-      'obrigado': 'aguyjewete',
-    };
-
     if (translateDirection === 'tupi-pt') {
-      // Try to find an exact match in our dictionary
+      // Tentar encontrar correspondência exata
       if (mockTupiToPt[inputText.toLowerCase()]) {
         setOutputText(mockTupiToPt[inputText.toLowerCase()]);
         setMascotMessage('Tradução concluída! Quer aprender mais palavras?');
       } else {
-        setOutputText('(Tradução não disponível - isso é uma demonstração)');
-        setMascotMessage('Desculpe, ainda estou aprendendo essa palavra!');
+        // Verificar palavras individuais
+        const palavras = inputText.toLowerCase().split(' ');
+        const traducoes = palavras.map(palavra => mockTupiToPt[palavra] || palavra);
+        
+        if (traducoes.some(t => t !== palavras[traducoes.indexOf(t)])) {
+          setOutputText(traducoes.join(' '));
+          setMascotMessage('Tradução parcial concluída. Algumas palavras não foram reconhecidas.');
+        } else {
+          setOutputText('(Tradução não disponível - isso é uma demonstração)');
+          setMascotMessage('Desculpe, ainda estou aprendendo essa palavra!');
+        }
       }
     } else {
-      // Try to find an exact match in our dictionary
+      // Tentar encontrar correspondência exata
       if (mockPtToTupi[inputText.toLowerCase()]) {
         setOutputText(mockPtToTupi[inputText.toLowerCase()]);
         setMascotMessage('Porã! Essa é uma boa tradução!');
       } else {
-        setOutputText('(Tradução não disponível - isso é uma demonstração)');
-        setMascotMessage('Ainda estou aprendendo essa palavra em Tupi!');
+        // Verificar palavras individuais
+        const palavras = inputText.toLowerCase().split(' ');
+        const traducoes = palavras.map(palavra => mockPtToTupi[palavra] || palavra);
+        
+        if (traducoes.some(t => t !== palavras[traducoes.indexOf(t)])) {
+          setOutputText(traducoes.join(' '));
+          setMascotMessage('Tradução parcial concluída. Algumas palavras não foram reconhecidas.');
+        } else {
+          setOutputText('(Tradução não disponível - isso é uma demonstração)');
+          setMascotMessage('Ainda estou aprendendo essa palavra em Tupi!');
+        }
       }
     }
   };
@@ -66,14 +115,14 @@ const TranslatorPage: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen flex flex-col p-6" role="main">
+    <div className="min-h-screen flex flex-col p-6 bg-white" role="main">
       <header className="flex items-center justify-between mb-6">
         <h1 className="text-2xl font-bold text-tekoha-accent font-comic">Tradutor</h1>
         <Button 
           variant="outline" 
           size="sm" 
           onClick={handleSwitchDirection}
-          className="flex items-center gap-2"
+          className="flex items-center gap-2 focus:ring-2 focus:ring-tekoha-accent/50"
           aria-label={`Mudar direção: ${translateDirection === 'tupi-pt' ? 'Tupi para Português' : 'Português para Tupi'}`}
         >
           <span>{translateDirection === 'tupi-pt' ? 'Tupi → Pt' : 'Pt → Tupi'}</span>
@@ -82,8 +131,8 @@ const TranslatorPage: React.FC = () => {
       </header>
 
       <div className="flex-1 flex flex-col gap-4">
-        <div className="tekoha-card p-4">
-          <label htmlFor="translationInput" className="text-white text-sm mb-2 block">
+        <div className="bg-white border-2 border-tekoha-secondary/30 rounded-xl shadow-md p-4">
+          <label htmlFor="translationInput" className="text-gray-800 text-sm mb-2 block">
             {translateDirection === 'tupi-pt' ? 'Texto em Tupi' : 'Texto em Português'}:
           </label>
           <div className="flex gap-2">
@@ -92,12 +141,12 @@ const TranslatorPage: React.FC = () => {
               value={inputText}
               onChange={(e) => setInputText(e.target.value)}
               placeholder={translateDirection === 'tupi-pt' ? 'Digite em Tupi...' : 'Digite em Português...'}
-              className="tekoha-input min-h-[100px] w-full"
+              className="min-h-[100px] w-full border-2 border-tekoha-secondary/30 focus:border-tekoha-secondary"
               aria-label={translateDirection === 'tupi-pt' ? 'Digite o texto em Tupi para traduzir' : 'Digite o texto em Português para traduzir'}
             />
             <Button 
               size="icon" 
-              className="bg-tekoha-interactive"
+              className="bg-tekoha-interactive hover:bg-tekoha-interactive/80 active:scale-95 transition-all focus:outline-none focus:ring-2 focus:ring-tekoha-accent/50"
               aria-label="Usar microfone para entrada de voz"
               title="Esta funcionalidade será implementada em breve"
             >
@@ -107,16 +156,16 @@ const TranslatorPage: React.FC = () => {
         </div>
 
         {outputText && (
-          <div className="tekoha-card p-4 animate-fade-in">
+          <div className="bg-white border-2 border-tekoha-secondary/30 rounded-xl shadow-md p-4 animate-fade-in">
             <div className="flex justify-between items-center mb-2">
-              <label htmlFor="translationOutput" className="text-white text-sm block">
+              <label htmlFor="translationOutput" className="text-gray-800 text-sm block">
                 {translateDirection === 'tupi-pt' ? 'Tradução para Português' : 'Tradução para Tupi'}:
               </label>
               <Button 
                 size="sm" 
                 variant="ghost" 
                 onClick={playSpeech} 
-                className="text-tekoha-interactive"
+                className="text-tekoha-interactive focus:ring-2 focus:ring-tekoha-accent/50"
                 aria-label="Ouvir a tradução"
                 title="Esta funcionalidade será implementada em breve"
               >
@@ -125,12 +174,12 @@ const TranslatorPage: React.FC = () => {
             </div>
             <div 
               id="translationOutput"
-              className="bg-tekoha-background/60 rounded-xl p-4 border border-tekoha-secondary/30"
+              className="bg-gray-50 rounded-xl p-4 border border-tekoha-secondary/30"
               aria-live="polite"
               role="region" 
               aria-label="Resultado da tradução"
             >
-              <p className="text-white">{outputText}</p>
+              <p className="text-gray-800">{outputText}</p>
             </div>
           </div>
         )}
@@ -138,7 +187,7 @@ const TranslatorPage: React.FC = () => {
         <div className="mt-4">
           <Button 
             onClick={translateText}
-            className="w-full bg-tekoha-secondary hover:bg-tekoha-secondary/90 py-6 text-lg"
+            className="w-full bg-tekoha-secondary hover:bg-tekoha-secondary/90 py-6 text-lg active:scale-95 transition-all focus:outline-none focus:ring-2 focus:ring-tekoha-accent/50"
             aria-label="Traduzir o texto digitado"
           >
             <MessageSquare className="mr-2 h-5 w-5" aria-hidden="true" /> Traduzir
@@ -146,7 +195,7 @@ const TranslatorPage: React.FC = () => {
         </div>
 
         <div className="mt-4" aria-labelledby="suggestionsHeading">
-          <h3 id="suggestionsHeading" className="text-lg font-medium text-white mb-2">Sugestões:</h3>
+          <h3 id="suggestionsHeading" className="text-lg font-medium text-gray-800 mb-2">Sugestões:</h3>
           <div className="flex flex-wrap gap-2" role="group" aria-label="Sugestões de palavras para tradução">
             {translateDirection === 'tupi-pt' ? (
               <>
@@ -154,6 +203,8 @@ const TranslatorPage: React.FC = () => {
                 <Button variant="outline" size="sm" onClick={() => setInputText('nde porã')}>nde porã</Button>
                 <Button variant="outline" size="sm" onClick={() => setInputText('xe py\'a pe')}>xe py'a pe</Button>
                 <Button variant="outline" size="sm" onClick={() => setInputText('paranã')}>paranã</Button>
+                <Button variant="outline" size="sm" onClick={() => setInputText('îaguara')}>îaguara</Button>
+                <Button variant="outline" size="sm" onClick={() => setInputText('ara porã')}>ara porã</Button>
               </>
             ) : (
               <>
@@ -161,6 +212,8 @@ const TranslatorPage: React.FC = () => {
                 <Button variant="outline" size="sm" onClick={() => setInputText('água boa')}>água boa</Button>
                 <Button variant="outline" size="sm" onClick={() => setInputText('eu te amo')}>eu te amo</Button>
                 <Button variant="outline" size="sm" onClick={() => setInputText('obrigado')}>obrigado</Button>
+                <Button variant="outline" size="sm" onClick={() => setInputText('floresta')}>floresta</Button>
+                <Button variant="outline" size="sm" onClick={() => setInputText('pássaro')}>pássaro</Button>
               </>
             )}
           </div>
@@ -171,6 +224,7 @@ const TranslatorPage: React.FC = () => {
         position="bottom-right" 
         message={mascotMessage}
         autoHide={false}
+        size="md"
       />
     </div>
   );

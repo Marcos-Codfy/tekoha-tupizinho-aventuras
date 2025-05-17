@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import { Input } from '../components/ui/input';
 import { Button } from '../components/ui/button';
@@ -19,7 +20,7 @@ const GlossaryPage: React.FC = () => {
   const [activeCategory, setActiveCategory] = useState('all');
   const [mascotMessage, setMascotMessage] = useState('No glossário você encontra palavras em Tupi com imagens e áudio! Explore por categorias!');
 
-  // Sample glossary data
+  // Glossário ampliado com mais palavras
   const glossaryItems: GlossaryItem[] = [
     {
       id: '1',
@@ -69,6 +70,71 @@ const GlossaryPage: React.FC = () => {
       category: 'lugares',
       imageUrl: 'https://images.unsplash.com/photo-1580587771525-78b9dba3b914?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1742&q=80'
     },
+    // Novas palavras adicionadas
+    {
+      id: '7',
+      tupiWord: 'Ara',
+      ptTranslation: 'Dia, tempo',
+      grammarClass: 'Substantivo',
+      category: 'tempo',
+      imageUrl: 'https://images.unsplash.com/photo-1566228015668-4c45dbc4e2f5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1744&q=80'
+    },
+    {
+      id: '8',
+      tupiWord: 'Pitanga',
+      ptTranslation: 'Fruta vermelha',
+      grammarClass: 'Substantivo',
+      category: 'comida',
+      imageUrl: 'https://images.unsplash.com/photo-1597268621819-dcc5a5fa3050?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80'
+    },
+    {
+      id: '9',
+      tupiWord: 'Piá',
+      ptTranslation: 'Coração',
+      grammarClass: 'Substantivo',
+      category: 'corpo',
+      imageUrl: 'https://images.unsplash.com/photo-1514483127413-f72f273478c3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80'
+    },
+    {
+      id: '10',
+      tupiWord: 'Îasy',
+      ptTranslation: 'Lua',
+      grammarClass: 'Substantivo',
+      category: 'natureza',
+      imageUrl: 'https://images.unsplash.com/photo-1532117182244-7847342bb70c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80'
+    },
+    {
+      id: '11',
+      tupiWord: 'Kaá',
+      ptTranslation: 'Mato, floresta',
+      grammarClass: 'Substantivo',
+      category: 'natureza',
+      imageUrl: 'https://images.unsplash.com/photo-1542273917363-3b1817f69a2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1744&q=80'
+    },
+    {
+      id: '12',
+      tupiWord: 'Abá',
+      ptTranslation: 'Pessoa, gente',
+      grammarClass: 'Substantivo',
+      category: 'pessoas',
+      imageUrl: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80'
+    },
+    {
+      id: '13',
+      tupiWord: 'Poxy',
+      ptTranslation: 'Feio, ruim',
+      grammarClass: 'Adjetivo',
+      category: 'adjetivos',
+      imageUrl: 'https://images.unsplash.com/photo-1594007759138-855170ec8dc0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1738&q=80'
+    },
+    {
+      id: '14',
+      tupiWord: 'Guyrá',
+      ptTranslation: 'Pássaro',
+      grammarClass: 'Substantivo',
+      category: 'animais',
+      imageUrl: 'https://images.unsplash.com/photo-1444464666168-49d633b86797?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1738&q=80'
+    }
   ];
 
   // Filter items based on search and category
@@ -92,7 +158,9 @@ const GlossaryPage: React.FC = () => {
       'pessoas': 'Palavras relacionadas a pessoas e família.',
       'comida': 'Frutas, alimentos e bebidas em Tupi!',
       'lugares': 'Nomes de lugares e construções.',
-      'adjetivos': 'Palavras que descrevem características.'
+      'adjetivos': 'Palavras que descrevem características.',
+      'tempo': 'Palavras relacionadas ao tempo e clima.',
+      'corpo': 'Partes do corpo humano em Tupi.'
     };
     
     setMascotMessage(categoryMessages[category] || 'Explore as categorias!');
@@ -103,7 +171,7 @@ const GlossaryPage: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen flex flex-col p-6">
+    <div className="min-h-screen flex flex-col p-6 bg-white">
       <header className="flex items-center justify-between mb-6">
         <h1 className="text-2xl font-bold text-tekoha-accent font-comic">Glossário Ilustrado</h1>
         <BookMarked className="h-6 w-6 text-tekoha-interactive" />
@@ -111,42 +179,44 @@ const GlossaryPage: React.FC = () => {
 
       <div className="flex-1 flex flex-col gap-4">
         <div className="relative">
-          <Search className="absolute left-3 top-3 h-4 w-4 text-white/60" />
+          <Search className="absolute left-3 top-3 h-4 w-4 text-gray-500" />
           <Input
             type="text"
             placeholder="Buscar palavra em Tupi ou Português..."
-            className="tekoha-input pl-10"
+            className="pl-10 border-2 border-tekoha-secondary/30 focus:border-tekoha-secondary"
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
           />
         </div>
 
         <Tabs defaultValue="all" onValueChange={handleCategoryChange}>
-          <TabsList className="bg-tekoha-secondary/20 overflow-x-auto flex p-1 justify-start w-full">
-            <TabsTrigger value="all" className="text-sm">Todos</TabsTrigger>
-            <TabsTrigger value="natureza" className="text-sm">Natureza</TabsTrigger>
-            <TabsTrigger value="animais" className="text-sm">Animais</TabsTrigger>
-            <TabsTrigger value="pessoas" className="text-sm">Pessoas</TabsTrigger>
-            <TabsTrigger value="comida" className="text-sm">Comida</TabsTrigger>
-            <TabsTrigger value="lugares" className="text-sm">Lugares</TabsTrigger>
-            <TabsTrigger value="adjetivos" className="text-sm">Adjetivos</TabsTrigger>
-          </TabsList>
+          <div className="overflow-x-auto">
+            <TabsList className="bg-gray-100 p-1 justify-start w-full flex">
+              <TabsTrigger value="all" className="text-sm">Todos</TabsTrigger>
+              <TabsTrigger value="natureza" className="text-sm">Natureza</TabsTrigger>
+              <TabsTrigger value="animais" className="text-sm">Animais</TabsTrigger>
+              <TabsTrigger value="pessoas" className="text-sm">Pessoas</TabsTrigger>
+              <TabsTrigger value="comida" className="text-sm">Comida</TabsTrigger>
+              <TabsTrigger value="lugares" className="text-sm">Lugares</TabsTrigger>
+              <TabsTrigger value="adjetivos" className="text-sm">Adjetivos</TabsTrigger>
+              <TabsTrigger value="tempo" className="text-sm">Tempo</TabsTrigger>
+              <TabsTrigger value="corpo" className="text-sm">Corpo</TabsTrigger>
+            </TabsList>
+          </div>
           
-          <TabsContent value="all" className="mt-4">
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              {filteredItems.map((item) => (
-                <GlossaryCard key={item.id} item={item} onPlayAudio={playAudio} />
-              ))}
-            </div>
-          </TabsContent>
-          
-          {['natureza', 'animais', 'pessoas', 'comida', 'lugares', 'adjetivos'].map(category => (
+          {['all', 'natureza', 'animais', 'pessoas', 'comida', 'lugares', 'adjetivos', 'tempo', 'corpo'].map(category => (
             <TabsContent key={category} value={category} className="mt-4">
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                {filteredItems.map((item) => (
-                  <GlossaryCard key={item.id} item={item} onPlayAudio={playAudio} />
-                ))}
-              </div>
+              {filteredItems.length > 0 ? (
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  {filteredItems.map((item) => (
+                    <GlossaryCard key={item.id} item={item} onPlayAudio={playAudio} />
+                  ))}
+                </div>
+              ) : (
+                <div className="text-center py-10 bg-gray-50 rounded-lg">
+                  <p className="text-gray-500">Nenhuma palavra encontrada para esta categoria ou busca.</p>
+                </div>
+              )}
             </TabsContent>
           ))}
         </Tabs>
@@ -156,6 +226,7 @@ const GlossaryPage: React.FC = () => {
         position="bottom-right" 
         message={mascotMessage}
         autoHide={false}
+        size="md"
       />
     </div>
   );
@@ -168,7 +239,7 @@ interface GlossaryCardProps {
 
 const GlossaryCard: React.FC<GlossaryCardProps> = ({ item, onPlayAudio }) => {
   return (
-    <div className="tekoha-card overflow-hidden animate-fade-in">
+    <div className="overflow-hidden animate-fade-in bg-white border-2 border-tekoha-secondary/30 rounded-xl shadow-md">
       <div className="h-36 overflow-hidden">
         <img 
           src={item.imageUrl} 
@@ -188,10 +259,10 @@ const GlossaryCard: React.FC<GlossaryCardProps> = ({ item, onPlayAudio }) => {
             <Volume2 className="h-5 w-5" />
           </Button>
         </div>
-        <p className="text-white mt-1">{item.ptTranslation}</p>
+        <p className="text-gray-800 mt-1">{item.ptTranslation}</p>
         <div className="flex justify-between mt-2">
-          <span className="text-xs text-white/70">{item.grammarClass}</span>
-          <span className="text-xs px-2 py-1 rounded-full bg-tekoha-secondary/30 text-white/90">
+          <span className="text-xs text-gray-500">{item.grammarClass}</span>
+          <span className="text-xs px-2 py-1 rounded-full bg-tekoha-secondary/30 text-gray-700">
             {item.category}
           </span>
         </div>

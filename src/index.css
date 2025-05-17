@@ -7,14 +7,14 @@
 
 @layer base {
   :root {
-    --background: 342 31% 28%; /* #5c323e - dark background */
-    --foreground: 0 0% 98%;
+    --background: 0 0% 100%; /* #ffffff - white background */
+    --foreground: 0 0% 20%; /* dark grey text */
 
-    --card: 342 31% 28%;
-    --card-foreground: 0 0% 98%;
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 20%;
 
-    --popover: 342 31% 28%;
-    --popover-foreground: 0 0% 98%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 20%;
 
     --primary: 341 62% 40%;  /* #a82743 - secondary color */
     --primary-foreground: 0 0% 98%;
@@ -22,8 +22,8 @@
     --secondary: 13 75% 54%; /* #e15e32 - highlight color */
     --secondary-foreground: 0 0% 98%;
 
-    --muted: 342 15% 40%;
-    --muted-foreground: 0 0% 80%;
+    --muted: 0 0% 90%;
+    --muted-foreground: 0 0% 50%;
 
     --accent: 13 75% 54%; /* #e15e32 - highlight color */
     --accent-foreground: 0 0% 98%;
@@ -31,19 +31,19 @@
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 0 0% 98%;
 
-    --border: 341 30% 35%;
-    --input: 341 30% 35%;
+    --border: 0 0% 80%;
+    --input: 0 0% 80%;
     --ring: 341 62% 40%; /* #a82743 - secondary color */
 
     --radius: 1rem;
 
-    --sidebar-background: 342 31% 28%;
-    --sidebar-foreground: 0 0% 98%;
+    --sidebar-background: 0 0% 100%;
+    --sidebar-foreground: 0 0% 20%;
     --sidebar-primary: 341 62% 40%;
     --sidebar-primary-foreground: 0 0% 98%;
     --sidebar-accent: 13 75% 54%;
     --sidebar-accent-foreground: 0 0% 98%;
-    --sidebar-border: 341 30% 35%;
+    --sidebar-border: 0 0% 80%;
     --sidebar-ring: 341 62% 40%;
   }
 
@@ -52,9 +52,9 @@
   }
 
   body {
-    @apply bg-tekoha-background text-foreground font-rounded min-h-screen;
-    background-image: radial-gradient(circle at top left, rgba(225, 94, 50, 0.1) 0%, transparent 40%),
-                     radial-gradient(circle at bottom right, rgba(192, 210, 62, 0.1) 0%, transparent 40%);
+    @apply bg-white text-gray-800 font-rounded min-h-screen;
+    background-image: radial-gradient(circle at top left, rgba(225, 94, 50, 0.05) 0%, transparent 40%),
+                      radial-gradient(circle at bottom right, rgba(192, 210, 62, 0.05) 0%, transparent 40%);
     background-attachment: fixed;
   }
 
@@ -65,23 +65,23 @@
 
 @layer components {
   .tekoha-card {
-    @apply bg-tekoha-background/60 backdrop-blur-sm border-2 border-tekoha-secondary/30 rounded-2xl shadow-lg overflow-hidden;
+    @apply bg-white border-2 border-tekoha-secondary/30 rounded-2xl shadow-lg overflow-hidden;
   }
   
   .tekoha-button {
-    @apply bg-tekoha-secondary hover:bg-tekoha-secondary/90 text-white font-medium rounded-full py-2 md:py-3 px-4 md:px-6 transition-all duration-200 flex items-center justify-center gap-2 shadow-md hover:shadow-lg focus:ring-2 focus:ring-tekoha-accent/50 focus:outline-none;
+    @apply bg-tekoha-secondary hover:bg-tekoha-secondary/90 text-white font-medium rounded-full py-2 md:py-3 px-4 md:px-6 transition-all duration-200 flex items-center justify-center gap-2 shadow-md hover:shadow-lg focus:ring-2 focus:ring-tekoha-accent/50 focus:outline-none active:scale-95;
   }
   
   .tekoha-button-outline {
-    @apply border-2 border-tekoha-secondary bg-transparent hover:bg-tekoha-secondary/10 text-tekoha-secondary hover:text-white font-medium rounded-full py-2 px-4 md:py-2.5 md:px-5 transition-all duration-200;
+    @apply border-2 border-tekoha-secondary bg-transparent hover:bg-tekoha-secondary/10 text-tekoha-secondary hover:text-white font-medium rounded-full py-2 px-4 md:py-2.5 md:px-5 transition-all duration-200 active:scale-95;
   }
   
   .tekoha-input {
-    @apply bg-tekoha-background/60 border-2 border-tekoha-secondary/30 rounded-xl p-2 md:p-3 focus:border-tekoha-secondary focus:outline-none focus:ring-2 focus:ring-tekoha-accent/50 text-white placeholder:text-white/50;
+    @apply bg-white border-2 border-tekoha-secondary/30 rounded-xl p-2 md:p-3 focus:border-tekoha-secondary focus:outline-none focus:ring-2 focus:ring-tekoha-accent/50 text-gray-800 placeholder:text-gray-400;
   }
   
   .profile-card {
-    @apply flex flex-col items-center justify-center gap-2 md:gap-3 bg-tekoha-secondary/20 hover:bg-tekoha-secondary/30 p-3 md:p-5 rounded-xl transition-all duration-300 cursor-pointer border-2 border-transparent hover:border-tekoha-accent;
+    @apply flex flex-col items-center justify-center gap-2 md:gap-3 bg-tekoha-secondary/10 hover:bg-tekoha-secondary/20 p-3 md:p-5 rounded-xl transition-all duration-300 cursor-pointer border-2 border-transparent hover:border-tekoha-accent active:scale-95;
   }
 
   .mascot-container {
@@ -89,7 +89,7 @@
   }
 
   .mascot-speech {
-    @apply bg-white text-tekoha-background p-3 md:p-4 rounded-2xl shadow-lg max-w-xs relative animate-fade-in;
+    @apply bg-white text-gray-800 p-3 md:p-4 rounded-2xl shadow-lg max-w-xs relative animate-fade-in;
   }
   
   .mascot-speech:after {
@@ -123,4 +123,20 @@
   to {
     transform: rotate(1turn);
   }
+}
+
+/* Animações do mascote */
+@keyframes mascot-appear {
+  from {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.animate-mascot-appear {
+  animation: mascot-appear 0.5s ease-out forwards;
 }

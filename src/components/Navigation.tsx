@@ -50,12 +50,19 @@ const Navigation: React.FC = () => {
       path: '/achievements', 
       icon: <Trophy className="h-5 w-5 md:h-6 md:w-6" aria-hidden="true" />,
       ariaLabel: 'Ir para as conquistas'
+    },
+    { 
+      id: 'settings',
+      name: 'Config', 
+      path: '/settings', 
+      icon: <Settings className="h-5 w-5 md:h-6 md:w-6" aria-hidden="true" />,
+      ariaLabel: 'Configurações do aplicativo'
     }
   ];
 
   return (
     <div 
-      className="fixed bottom-0 left-0 right-0 bg-tekoha-background border-t-2 border-tekoha-secondary/30 z-40"
+      className="fixed bottom-0 left-0 right-0 bg-white border-t-2 border-tekoha-secondary/30 z-40"
       role="navigation" 
       aria-label="Menu principal"
     >
@@ -69,8 +76,8 @@ const Navigation: React.FC = () => {
               aria-label={item.ariaLabel}
               aria-current={isActive ? 'page' : undefined}
               className={`flex flex-col items-center justify-center ${isMobile ? 'p-1' : 'p-2'} rounded-lg ${
-                isActive ? 'text-tekoha-accent' : 'text-white/70 hover:text-white'
-              }`}
+                isActive ? 'text-tekoha-accent bg-tekoha-secondary/10' : 'text-gray-600 hover:text-tekoha-accent hover:bg-gray-100'
+              } active:scale-95 transition-all focus:outline-none focus:ring-2 focus:ring-tekoha-accent/50`}
             >
               <div className={`${isMobile ? 'p-1' : 'p-2'} rounded-full ${isActive ? 'bg-tekoha-secondary/20' : ''}`}>
                 {item.icon}
@@ -79,29 +86,6 @@ const Navigation: React.FC = () => {
             </Link>
           )
         })}
-        
-        <div className="flex flex-col items-center justify-center relative">
-          <div 
-            className="absolute -top-8 right-0 w-8 h-8 flex items-center justify-center"
-            aria-hidden="true"
-          >
-            <img 
-              src="/lovable-uploads/cc714f54-db55-4def-8d46-4721adaffc91.png" 
-              alt="Tupizinho mascote" 
-              className="w-full h-full object-contain animate-bounce hover:animate-none cursor-pointer"
-            />
-          </div>
-          <Link 
-            to="/settings"
-            aria-label="Configurações do aplicativo"
-            className={`flex flex-col items-center justify-center ${isMobile ? 'p-1' : 'p-2'} rounded-lg text-white/70 hover:text-white mt-2`}
-          >
-            <div className={`${isMobile ? 'p-1' : 'p-2'} rounded-full`}>
-              <Settings className="h-5 w-5 md:h-6 md:w-6" aria-hidden="true" />
-            </div>
-            <span className={`${isMobile ? 'text-[10px]' : 'text-xs'} mt-1`}>Config</span>
-          </Link>
-        </div>
       </nav>
     </div>
   );
