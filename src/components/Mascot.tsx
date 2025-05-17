@@ -7,16 +7,19 @@ interface MascotProps {
   message?: string;
   autoHide?: boolean;
   size?: 'sm' | 'md' | 'lg';
+  hideTime?: number;
 }
 
 const Mascot: React.FC<MascotProps> = ({
   position = 'bottom-right',
   message,
   autoHide = true,
-  size = 'md'
+  size = 'md',
+  hideTime = 3000
 }) => {
   const [isVisible, setIsVisible] = useState(!!message);
   const [showMessage, setShowMessage] = useState(!!message);
+  const [isAnimating, setIsAnimating] = useState(false);
   const isMobile = useIsMobile();
 
   useEffect(() => {
@@ -28,21 +31,21 @@ const Mascot: React.FC<MascotProps> = ({
         const timer = setTimeout(() => {
           setShowMessage(false);
           setTimeout(() => setIsVisible(false), 500);
-        }, 5000);
+        }, hideTime);
         
         return () => clearTimeout(timer);
       }
     } else {
       setShowMessage(false);
     }
-  }, [message, autoHide]);
+  }, [message, autoHide, hideTime]);
 
   const positionClasses = {
-    'bottom-right': 'bottom-4 right-4',
-    'bottom-left': 'bottom-4 left-4',
+    'bottom-right': 'bottom-16 right-4',
+    'bottom-left': 'bottom-16 left-4',
     'top-right': 'top-4 right-4',
     'top-left': 'top-4 left-4',
-    'center': 'bottom-16 inset-x-0 mx-auto'
+    'center': 'bottom-24 inset-x-0 mx-auto'
   };
   
   const sizeClasses = {
@@ -53,6 +56,15 @@ const Mascot: React.FC<MascotProps> = ({
 
   const handleClick = () => {
     setShowMessage(!showMessage);
+    setIsAnimating(true);
+    setTimeout(() => setIsAnimating(false), 500);
+  };
+
+  const handleHover = () => {
+    if (!showMessage && !isAnimating) {
+      setIsAnimating(true);
+      setTimeout(() => setIsAnimating(false), 500);
+    }
   };
 
   return isVisible ? (
@@ -63,7 +75,7 @@ const Mascot: React.FC<MascotProps> = ({
     >
       {showMessage && message && (
         <div 
-          className="mascot-speech mb-2 mr-2 animate-fade-in max-w-[180px] md:max-w-xs bg-white text-tekoha-background p-3 md:p-4 rounded-2xl shadow-lg relative"
+          className="mascot-speech mb-4 animate-fade-in max-w-[180px] md:max-w-xs bg-white text-tekoha-background p-3 md:p-4 rounded-2xl shadow-lg relative"
           role="status"
         >
           <p className="text-xs md:text-sm">{message}</p>
@@ -71,8 +83,9 @@ const Mascot: React.FC<MascotProps> = ({
         </div>
       )}
       <div 
-        className={`${sizeClasses[size]} cursor-pointer animate-mascot-appear hover:scale-105 transition-transform duration-200`}
+        className={`${sizeClasses[size]} cursor-pointer ${isAnimating ? 'animate-bounce' : 'hover:scale-110'} transition-transform duration-200`}
         onClick={handleClick}
+        onMouseEnter={handleHover}
         onKeyDown={(e) => {
           if (e.key === 'Enter' || e.key === ' ') {
             handleClick();
@@ -83,7 +96,7 @@ const Mascot: React.FC<MascotProps> = ({
         aria-label="Interagir com o mascote Tupizinho"
       >
         <img 
-          src="/lovable-uploads/cc714f54-db55-4def-8d46-4721adaffc91.png" 
+          src="/lovable-uploads/dd27744f-1b96-4c80-8b40-de71d4d32368.png" 
           alt="Tupizinho, o mascote do aplicativo Tekoha"
           className="w-full h-full object-contain"
         />

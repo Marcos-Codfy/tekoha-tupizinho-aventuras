@@ -50,7 +50,7 @@ const GamesPage: React.FC = () => {
     }
   ];
 
-  // Memory game cards
+  // Memory game cards - ampliado para mais pares
   const memoryCards = [
     { id: 1, content: 'Paranã', pairId: 1 },
     { id: 2, content: 'Rio', pairId: 1 },
@@ -60,6 +60,14 @@ const GamesPage: React.FC = () => {
     { id: 6, content: 'Onça', pairId: 3 },
     { id: 7, content: 'Yba', pairId: 4 },
     { id: 8, content: 'Fruta', pairId: 4 },
+    { id: 9, content: 'Ybytú', pairId: 5 },
+    { id: 10, content: 'Vento', pairId: 5 },
+    { id: 11, content: 'Pindá', pairId: 6 },
+    { id: 12, content: 'Anzol', pairId: 6 },
+    { id: 13, content: 'Abá', pairId: 7 },
+    { id: 14, content: 'Pessoa', pairId: 7 },
+    { id: 15, content: 'Kuaracy', pairId: 8 },
+    { id: 16, content: 'Sol', pairId: 8 },
   ];
 
   // Word blocks for the sentence building game
@@ -294,7 +302,8 @@ const GamesPage: React.FC = () => {
       <Mascot 
         position="bottom-right" 
         message={mascotMessage}
-        autoHide={false}
+        autoHide={true}
+        hideTime={3000}
       />
     </div>
   );
