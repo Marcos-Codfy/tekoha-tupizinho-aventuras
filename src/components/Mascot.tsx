@@ -75,10 +75,10 @@ const Mascot: React.FC<MascotProps> = ({
     >
       {showMessage && message && (
         <div 
-          className="mascot-speech mb-4 animate-fade-in max-w-[180px] md:max-w-xs bg-white text-tekoha-background p-3 md:p-4 rounded-2xl shadow-lg relative"
+          className="mascot-speech mb-4 animate-fade-in max-w-[180px] md:max-w-xs bg-white text-gray-800 p-3 md:p-4 rounded-2xl shadow-lg relative"
           role="status"
         >
-          <p className="text-xs md:text-sm">{message}</p>
+          <p className="text-xs md:text-sm font-medium">{message}</p>
           <div className="absolute bottom-[-10px] right-10 w-0 h-0 border-l-[10px] border-l-transparent border-t-[15px] border-t-white border-r-[10px] border-r-transparent"></div>
         </div>
       )}

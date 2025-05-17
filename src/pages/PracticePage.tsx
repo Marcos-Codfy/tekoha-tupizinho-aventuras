@@ -233,7 +233,7 @@ const PracticePage: React.FC = () => {
                 {msg.sender === 'mascot' && (
                   <div className="flex-shrink-0 mr-2">
                     <img 
-                      src="/lovable-uploads/cc714f54-db55-4def-8d46-4721adaffc91.png"
+                      src="/lovable-uploads/b0739bde-d553-4d7a-8ff0-2a31d0602ecb.png"
                       alt="Tupizinho" 
                       className="w-10 h-10 object-contain"
                     />
@@ -242,12 +242,12 @@ const PracticePage: React.FC = () => {
                 
                 <div className={`max-w-[70%] rounded-xl p-3 ${
                   msg.sender === 'user' 
-                    ? 'bg-tekoha-secondary/60 rounded-tr-none text-white' 
-                    : 'bg-gray-100 border border-tekoha-interactive/30 rounded-tl-none text-gray-800'
+                    ? 'bg-tekoha-secondary/60 rounded-tr-none text-black font-medium' 
+                    : 'bg-gray-100 border border-tekoha-interactive/30 rounded-tl-none text-black font-medium'
                 }`}>
                   <p>{msg.text}</p>
                   {msg.sender === 'mascot' && showTranslation && msg.translated && (
-                    <p className="text-gray-500 text-sm mt-1 border-t border-gray-200 pt-1">
+                    <p className="text-gray-700 text-sm mt-1 border-t border-gray-200 pt-1 font-medium">
                       {msg.translated}
                     </p>
                   )}
@@ -308,8 +308,9 @@ const PracticePage: React.FC = () => {
       <Mascot 
         position="bottom-right" 
         message={mascotMessage}
-        autoHide={false}
+        autoHide={true}
         size="md"
+        hideTime={3000}
       />
     </div>
   );

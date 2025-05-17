@@ -68,6 +68,10 @@ const GamesPage: React.FC = () => {
     { id: 14, content: 'Pessoa', pairId: 7 },
     { id: 15, content: 'Kuaracy', pairId: 8 },
     { id: 16, content: 'Sol', pairId: 8 },
+    { id: 17, content: 'Îasy', pairId: 9 },
+    { id: 18, content: 'Lua', pairId: 9 },
+    { id: 19, content: 'Pirá', pairId: 10 },
+    { id: 20, content: 'Peixe', pairId: 10 },
   ];
 
   // Word blocks for the sentence building game
@@ -159,7 +163,7 @@ const GamesPage: React.FC = () => {
         return (
           <div className="mt-4">
             <div className="flex justify-between items-center mb-4">
-              <h3 className="text-lg font-medium text-white">Pares encontrados: {score}/{memoryCards.length/2}</h3>
+              <h3 className="text-lg font-medium text-black">Pares encontrados: {score}/{memoryCards.length/2}</h3>
               <Button size="sm" onClick={() => setActiveGame(null)}>Voltar</Button>
             </div>
             <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
@@ -168,7 +172,7 @@ const GamesPage: React.FC = () => {
                   key={card.id}
                   className={`aspect-square flex items-center justify-center rounded-lg text-lg font-medium transition-all duration-300 cursor-pointer
                     ${flippedCards.includes(card.id) || matchedPairs.includes(card.id) 
-                      ? 'bg-tekoha-interactive text-tekoha-background rotate-y-0' 
+                      ? 'bg-tekoha-interactive text-black font-bold' 
                       : 'bg-tekoha-secondary text-transparent rotate-y-180'}
                     ${matchedPairs.includes(card.id) ? 'opacity-70' : 'opacity-100'}
                   `}
@@ -185,17 +189,17 @@ const GamesPage: React.FC = () => {
         return (
           <div className="mt-4">
             <div className="flex justify-between items-center mb-4">
-              <h3 className="text-lg font-medium text-white">Monte a frase em Tupi</h3>
+              <h3 className="text-lg font-medium text-black">Monte a frase em Tupi</h3>
               <Button size="sm" onClick={() => setActiveGame(null)}>Voltar</Button>
             </div>
             
             <div className="tekoha-card p-4 mb-6">
-              <p className="text-white text-center mb-2">Objetivo: "Eu gosto da sua casa bonita"</p>
+              <p className="text-gray-800 text-center mb-2 font-medium">Objetivo: "Eu gosto da sua casa bonita"</p>
               <div className="min-h-16 p-3 border-2 border-dashed border-tekoha-interactive/50 rounded-lg flex flex-wrap gap-2">
                 {selectedBlocks.map((block, index) => (
                   <div 
                     key={index}
-                    className="py-2 px-3 bg-tekoha-interactive text-tekoha-background rounded-lg font-medium"
+                    className="py-2 px-3 bg-tekoha-interactive text-black rounded-lg font-medium"
                   >
                     {block}
                   </div>
@@ -219,7 +223,7 @@ const GamesPage: React.FC = () => {
                 <Button
                   key={index}
                   variant="outline"
-                  className="bg-tekoha-secondary/20 border-tekoha-secondary/40"
+                  className="bg-tekoha-secondary/20 border-tekoha-secondary/40 text-black font-medium"
                   onClick={() => handleBlockSelect(block)}
                   disabled={isCorrectSentence !== null}
                 >
@@ -243,8 +247,8 @@ const GamesPage: React.FC = () => {
         return (
           <div className="mt-4 flex flex-col items-center justify-center">
             <div className="mb-8 text-center">
-              <h3 className="text-lg font-medium text-white mb-4">Jogo em desenvolvimento!</h3>
-              <p className="text-white/70">Este jogo estará disponível em breve!</p>
+              <h3 className="text-lg font-medium text-gray-800 mb-4">Jogo em desenvolvimento!</h3>
+              <p className="text-gray-700 font-medium">Este jogo estará disponível em breve!</p>
               
               <div className="mt-8">
                 <Button onClick={() => setActiveGame(null)}>Voltar aos jogos</Button>
@@ -269,13 +273,13 @@ const GamesPage: React.FC = () => {
                     </CardTitle>
                     <span className="text-3xl">{game.icon}</span>
                   </div>
-                  <CardDescription className="text-white/80">
+                  <CardDescription className="text-black font-medium">
                     {game.description}
                   </CardDescription>
                 </CardHeader>
                 <CardContent>
                   <div className="flex justify-between items-center">
-                    <span className="text-xs px-2 py-1 rounded-full bg-tekoha-secondary/30 text-white/90">
+                    <span className="text-xs px-2 py-1 rounded-full bg-tekoha-secondary/30 text-black font-medium">
                       {game.level}
                     </span>
                     <Progress value={game.id === 'memory' ? 100 : 60} className="w-1/2 h-2" />
@@ -300,7 +304,7 @@ const GamesPage: React.FC = () => {
       </div>
 
       <Mascot 
-        position="bottom-right" 
+        position="top-right" 
         message={mascotMessage}
         autoHide={true}
         hideTime={3000}

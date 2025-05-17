@@ -78,16 +78,16 @@ const SettingsPage: React.FC = () => {
 
       <div className="flex-1">
         <div className="tekoha-card p-5 mb-6">
-          <h2 className="text-xl font-medium text-white mb-4">Seu Perfil</h2>
+          <h2 className="text-xl font-medium text-gray-800 mb-4">Seu Perfil</h2>
           
           <div className="space-y-4">
             <div className="flex items-center gap-4">
               <div className="bg-tekoha-secondary/20 p-3 rounded-full">
-                <User className="h-6 w-6 text-white" />
+                <User className="h-6 w-6 text-gray-800" />
               </div>
               <div className="flex-1">
-                <p className="text-white font-medium">Professor</p>
-                <p className="text-white/70 text-sm">Perfil selecionado</p>
+                <p className="text-gray-800 font-medium">Professor</p>
+                <p className="text-gray-600 text-sm">Perfil selecionado</p>
               </div>
               <Button 
                 variant="outline" 
@@ -101,7 +101,7 @@ const SettingsPage: React.FC = () => {
             </div>
             
             <div className="flex items-center gap-3 mt-4">
-              <Mail className="h-5 w-5 text-white/70" />
+              <Mail className="h-5 w-5 text-gray-600" />
               <Input 
                 type="email" 
                 placeholder="Seu email (opcional)"
@@ -114,44 +114,44 @@ const SettingsPage: React.FC = () => {
         </div>
 
         <div className="tekoha-card p-5 mb-6">
-          <h2 className="text-xl font-medium text-white mb-4">Aparência</h2>
+          <h2 className="text-xl font-medium text-gray-800 mb-4">Aparência</h2>
           
           <div className="space-y-4">
             <div className="flex justify-between items-center">
               <div className="flex items-center gap-2">
-                {theme === 'dark' ? <Moon className="h-5 w-5 text-white/70" /> : <Sun className="h-5 w-5 text-white/70" />}
-                <span className="text-white">Tema</span>
+                {theme === 'dark' ? <Moon className="h-5 w-5 text-gray-600" /> : <Sun className="h-5 w-5 text-gray-600" />}
+                <span className="text-gray-800">Tema</span>
               </div>
               
               <RadioGroup defaultValue={theme} onValueChange={handleThemeChange} className="flex gap-2">
                 <div className="flex items-center space-x-1">
                   <RadioGroupItem value="dark" id="theme-dark" />
-                  <Label htmlFor="theme-dark" className="text-white/70">Escuro</Label>
+                  <Label htmlFor="theme-dark" className="text-gray-700">Escuro</Label>
                 </div>
                 <div className="flex items-center space-x-1">
                   <RadioGroupItem value="light" id="theme-light" />
-                  <Label htmlFor="theme-light" className="text-white/70">Claro</Label>
+                  <Label htmlFor="theme-light" className="text-gray-700">Claro</Label>
                 </div>
               </RadioGroup>
             </div>
             
             <div className="flex justify-between items-center">
               <div className="flex items-center gap-2">
-                <span className="text-white">Tamanho da Fonte</span>
+                <span className="text-gray-800">Tamanho da Fonte</span>
               </div>
               
               <RadioGroup defaultValue={fontSize} onValueChange={setFontSize} className="flex gap-2">
                 <div className="flex items-center space-x-1">
                   <RadioGroupItem value="small" id="font-small" />
-                  <Label htmlFor="font-small" className="text-white/70">P</Label>
+                  <Label htmlFor="font-small" className="text-gray-700">P</Label>
                 </div>
                 <div className="flex items-center space-x-1">
                   <RadioGroupItem value="medium" id="font-medium" />
-                  <Label htmlFor="font-medium" className="text-white/70">M</Label>
+                  <Label htmlFor="font-medium" className="text-gray-700">M</Label>
                 </div>
                 <div className="flex items-center space-x-1">
                   <RadioGroupItem value="large" id="font-large" />
-                  <Label htmlFor="font-large" className="text-white/70">G</Label>
+                  <Label htmlFor="font-large" className="text-gray-700">G</Label>
                 </div>
               </RadioGroup>
             </div>
@@ -159,20 +159,20 @@ const SettingsPage: React.FC = () => {
         </div>
 
         <div className="tekoha-card p-5 mb-6">
-          <h2 className="text-xl font-medium text-white mb-4">Preferências</h2>
+          <h2 className="text-xl font-medium text-gray-800 mb-4">Preferências</h2>
           
           <div className="space-y-4">
             <div className="flex justify-between items-center">
               <div className="flex items-center gap-2">
-                {soundEnabled ? <Volume2 className="h-5 w-5 text-white/70" /> : <VolumeX className="h-5 w-5 text-white/70" />}
-                <span className="text-white">Sons</span>
+                {soundEnabled ? <Volume2 className="h-5 w-5 text-gray-600" /> : <VolumeX className="h-5 w-5 text-gray-600" />}
+                <span className="text-gray-800">Sons</span>
               </div>
               <Switch checked={soundEnabled} onCheckedChange={handleSoundToggle} />
             </div>
             
             <div className="flex justify-between items-center">
               <div className="flex items-center gap-2">
-                <span className="text-white">Notificações</span>
+                <span className="text-gray-800">Notificações</span>
               </div>
               <Switch checked={notificationsEnabled} onCheckedChange={setNotificationsEnabled} />
             </div>
@@ -180,11 +180,11 @@ const SettingsPage: React.FC = () => {
             <div className="flex justify-between items-center">
               <div className="flex items-center gap-2">
                 <img 
-                  src="/lovable-uploads/9620d32b-42f8-4faa-8659-e65d986e769b.png"
+                  src="/lovable-uploads/b0739bde-d553-4d7a-8ff0-2a31d0602ecb.png"
                   alt="Tupizinho"
                   className="w-5 h-5" 
                 />
-                <span className="text-white">Tupizinho (Mascote)</span>
+                <span className="text-gray-800">Tupizinho (Mascote)</span>
               </div>
               <Switch checked={mascotEnabled} onCheckedChange={handleMascotToggle} />
             </div>
@@ -192,22 +192,22 @@ const SettingsPage: React.FC = () => {
         </div>
 
         <div className="tekoha-card p-5 mb-6">
-          <h2 className="text-xl font-medium text-white mb-4">Aplicativo</h2>
+          <h2 className="text-xl font-medium text-gray-800 mb-4">Aplicativo</h2>
           
           <div className="space-y-4">
             <div className="flex justify-between items-center">
               <div className="flex items-center gap-2">
-                <Download className="h-5 w-5 text-white/70" />
-                <span className="text-white">Modo Offline</span>
+                <Download className="h-5 w-5 text-gray-600" />
+                <span className="text-gray-800">Modo Offline</span>
               </div>
               <Switch checked={offlineMode} onCheckedChange={handleOfflineToggle} />
             </div>
             
             <div className="mt-4 pt-4 border-t border-tekoha-secondary/30">
               <div className="flex items-center gap-2">
-                <Laptop className="h-5 w-5 text-white/70" />
-                <span className="text-white">Versão do App</span>
-                <span className="text-white/70 text-sm ml-auto">1.0.0</span>
+                <Laptop className="h-5 w-5 text-gray-600" />
+                <span className="text-gray-800">Versão do App</span>
+                <span className="text-gray-600 text-sm ml-auto">1.0.0</span>
               </div>
             </div>
           </div>
@@ -222,9 +222,10 @@ const SettingsPage: React.FC = () => {
 
       {mascotEnabled && (
         <Mascot 
-          position="bottom-right" 
+          position="top-right" 
           message={mascotMessage}
-          autoHide={false}
+          autoHide={true}
+          hideTime={3000}
         />
       )}
     </div>
