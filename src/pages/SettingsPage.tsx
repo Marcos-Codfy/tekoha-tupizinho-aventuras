@@ -5,10 +5,12 @@ import { Input } from '../components/ui/input';
 import { Switch } from '../components/ui/switch';
 import { RadioGroup, RadioGroupItem } from '../components/ui/radio-group';
 import { Label } from '../components/ui/label';
-import { Settings, VolumeX, Volume2, Download, Laptop, Moon, Sun, User, Mail } from 'lucide-react';
+import { Settings, VolumeX, Volume2, Download, Laptop, Moon, Sun, User, Mail, UserCircle2 } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 import Mascot from '../components/Mascot';
 
 const SettingsPage: React.FC = () => {
+  const navigate = useNavigate();
   const [soundEnabled, setSoundEnabled] = useState(true);
   const [notificationsEnabled, setNotificationsEnabled] = useState(true);
   const [offlineMode, setOfflineMode] = useState(false);
@@ -58,6 +60,15 @@ const SettingsPage: React.FC = () => {
     setMascotMessage('Configurações salvas com sucesso!');
   };
 
+  const handleChangeProfile = () => {
+    setMascotMessage('Vamos escolher um novo perfil!');
+    
+    // Navigate to profile selection page with a small delay to show the mascot message
+    setTimeout(() => {
+      navigate('/profile-selection');
+    }, 1000);
+  };
+
   return (
     <div className="min-h-screen flex flex-col p-6">
       <header className="flex items-center justify-between mb-6">
@@ -78,7 +89,15 @@ const SettingsPage: React.FC = () => {
                 <p className="text-white font-medium">Professor</p>
                 <p className="text-white/70 text-sm">Perfil selecionado</p>
               </div>
-              <Button variant="outline" size="sm">Alterar</Button>
+              <Button 
+                variant="outline" 
+                size="sm" 
+                onClick={handleChangeProfile}
+                className="flex items-center gap-1"
+              >
+                <UserCircle2 className="h-4 w-4" />
+                Trocar Perfil
+              </Button>
             </div>
             
             <div className="flex items-center gap-3 mt-4">
