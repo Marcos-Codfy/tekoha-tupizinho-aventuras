@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import { Input } from '../components/ui/input';
 import { Button } from '../components/ui/button';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '../components/ui/tabs';
-import { BookMarked, Search, Volume2 } from 'lucide-react';
+import { BookMarked, Search, Volume2, BookOpen } from 'lucide-react';
 import Mascot from '../components/Mascot';
 
 interface GlossaryItem {
@@ -19,6 +19,7 @@ const GlossaryPage: React.FC = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const [activeCategory, setActiveCategory] = useState('all');
   const [mascotMessage, setMascotMessage] = useState('No glossário você encontra palavras em Tupi com imagens e áudio! Explore por categorias!');
+  const [viewMode, setViewMode] = useState<'grid' | 'list'>('grid');
 
   // Glossário ampliado com mais palavras
   const glossaryItems: GlossaryItem[] = [
@@ -170,51 +171,67 @@ const GlossaryPage: React.FC = () => {
     setMascotMessage(`A pronúncia de "${word}" será implementada em breve!`);
   };
 
+  const toggleViewMode = () => {
+    setViewMode(viewMode === 'grid' ? 'list' : 'grid');
+    setMascotMessage(`Modo de visualização alterado para ${viewMode === 'grid' ? 'lista' : 'grade'}!`);
+  };
+
   return (
     <div className="min-h-screen flex flex-col p-6 bg-white">
       <header className="flex items-center justify-between mb-6">
-        <h1 className="text-2xl font-bold text-tekoha-accent font-comic">Glossário Ilustrado</h1>
+        <h1 className="text-2xl font-bold text-tekoha-interactive font-comic">Glossário Ilustrado</h1>
         <BookMarked className="h-6 w-6 text-tekoha-interactive" />
       </header>
 
       <div className="flex-1 flex flex-col gap-4">
-        <div className="relative">
-          <Search className="absolute left-3 top-3 h-4 w-4 text-gray-500" />
-          <Input
-            type="text"
-            placeholder="Buscar palavra em Tupi ou Português..."
-            className="pl-10 border-2 border-tekoha-secondary/30 focus:border-tekoha-secondary"
-            value={searchTerm}
-            onChange={(e) => setSearchTerm(e.target.value)}
-          />
+        <div className="flex justify-between items-center gap-2">
+          <div className="relative flex-1">
+            <Search className="absolute left-3 top-3 h-4 w-4 text-gray-500" />
+            <Input
+              type="text"
+              placeholder="Buscar palavra em Tupi ou Português..."
+              className="pl-10 border-2 border-tekoha-secondary/30 focus:border-tekoha-secondary"
+              value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)}
+            />
+          </div>
+          <Button
+            onClick={toggleViewMode}
+            variant="outline"
+            size="sm"
+            className="flex items-center gap-1 border-tekoha-interactive text-tekoha-interactive hover:bg-tekoha-interactive/10"
+          >
+            <BookOpen className="h-4 w-4" />
+            <span>{viewMode === 'grid' ? 'Lista' : 'Grade'}</span>
+          </Button>
         </div>
 
         <Tabs defaultValue="all" onValueChange={handleCategoryChange}>
           <div className="overflow-x-auto">
             <TabsList className="bg-gray-100 p-1 justify-start w-full flex">
-              <TabsTrigger value="all" className="text-sm">Todos</TabsTrigger>
-              <TabsTrigger value="natureza" className="text-sm">Natureza</TabsTrigger>
-              <TabsTrigger value="animais" className="text-sm">Animais</TabsTrigger>
-              <TabsTrigger value="pessoas" className="text-sm">Pessoas</TabsTrigger>
-              <TabsTrigger value="comida" className="text-sm">Comida</TabsTrigger>
-              <TabsTrigger value="lugares" className="text-sm">Lugares</TabsTrigger>
-              <TabsTrigger value="adjetivos" className="text-sm">Adjetivos</TabsTrigger>
-              <TabsTrigger value="tempo" className="text-sm">Tempo</TabsTrigger>
-              <TabsTrigger value="corpo" className="text-sm">Corpo</TabsTrigger>
+              <TabsTrigger value="all" className="text-sm text-gray-800">Todos</TabsTrigger>
+              <TabsTrigger value="natureza" className="text-sm text-gray-800">Natureza</TabsTrigger>
+              <TabsTrigger value="animais" className="text-sm text-gray-800">Animais</TabsTrigger>
+              <TabsTrigger value="pessoas" className="text-sm text-gray-800">Pessoas</TabsTrigger>
+              <TabsTrigger value="comida" className="text-sm text-gray-800">Comida</TabsTrigger>
+              <TabsTrigger value="lugares" className="text-sm text-gray-800">Lugares</TabsTrigger>
+              <TabsTrigger value="adjetivos" className="text-sm text-gray-800">Adjetivos</TabsTrigger>
+              <TabsTrigger value="tempo" className="text-sm text-gray-800">Tempo</TabsTrigger>
+              <TabsTrigger value="corpo" className="text-sm text-gray-800">Corpo</TabsTrigger>
             </TabsList>
           </div>
           
           {['all', 'natureza', 'animais', 'pessoas', 'comida', 'lugares', 'adjetivos', 'tempo', 'corpo'].map(category => (
             <TabsContent key={category} value={category} className="mt-4">
               {filteredItems.length > 0 ? (
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div className={viewMode === 'grid' ? "grid grid-cols-1 sm:grid-cols-2 gap-4" : "flex flex-col gap-3"}>
                   {filteredItems.map((item) => (
-                    <GlossaryCard key={item.id} item={item} onPlayAudio={playAudio} />
+                    <GlossaryCard key={item.id} item={item} onPlayAudio={playAudio} viewMode={viewMode} />
                   ))}
                 </div>
               ) : (
                 <div className="text-center py-10 bg-gray-50 rounded-lg">
-                  <p className="text-gray-500">Nenhuma palavra encontrada para esta categoria ou busca.</p>
+                  <p className="text-gray-700">Nenhuma palavra encontrada para esta categoria ou busca.</p>
                 </div>
               )}
             </TabsContent>
@@ -225,7 +242,8 @@ const GlossaryPage: React.FC = () => {
       <Mascot 
         position="bottom-right" 
         message={mascotMessage}
-        autoHide={false}
+        autoHide={true}
+        hideTime={3000}
         size="md"
       />
     </div>
@@ -235,9 +253,42 @@ const GlossaryPage: React.FC = () => {
 interface GlossaryCardProps {
   item: GlossaryItem;
   onPlayAudio: (word: string) => void;
+  viewMode: 'grid' | 'list';
 }
 
-const GlossaryCard: React.FC<GlossaryCardProps> = ({ item, onPlayAudio }) => {
+const GlossaryCard: React.FC<GlossaryCardProps> = ({ item, onPlayAudio, viewMode }) => {
+  if (viewMode === 'list') {
+    return (
+      <div className="animate-fade-in bg-white border-2 border-tekoha-secondary/30 rounded-xl shadow-md p-3 flex items-center">
+        <img 
+          src={item.imageUrl} 
+          alt={item.tupiWord} 
+          className="w-16 h-16 object-cover rounded-md mr-4"
+        />
+        <div className="flex-1">
+          <div className="flex justify-between items-center">
+            <h3 className="text-xl font-bold text-tekoha-interactive">{item.tupiWord}</h3>
+            <Button 
+              variant="ghost" 
+              size="sm" 
+              onClick={() => onPlayAudio(item.tupiWord)}
+              className="text-tekoha-accent"
+            >
+              <Volume2 className="h-5 w-5" />
+            </Button>
+          </div>
+          <p className="text-gray-800 mt-1">{item.ptTranslation}</p>
+          <div className="flex justify-between mt-2">
+            <span className="text-xs text-gray-700">{item.grammarClass}</span>
+            <span className="text-xs px-2 py-1 rounded-full bg-tekoha-secondary/30 text-gray-800">
+              {item.category}
+            </span>
+          </div>
+        </div>
+      </div>
+    );
+  }
+  
   return (
     <div className="overflow-hidden animate-fade-in bg-white border-2 border-tekoha-secondary/30 rounded-xl shadow-md">
       <div className="h-36 overflow-hidden">
@@ -261,8 +312,8 @@ const GlossaryCard: React.FC<GlossaryCardProps> = ({ item, onPlayAudio }) => {
         </div>
         <p className="text-gray-800 mt-1">{item.ptTranslation}</p>
         <div className="flex justify-between mt-2">
-          <span className="text-xs text-gray-500">{item.grammarClass}</span>
-          <span className="text-xs px-2 py-1 rounded-full bg-tekoha-secondary/30 text-gray-700">
+          <span className="text-xs text-gray-700">{item.grammarClass}</span>
+          <span className="text-xs px-2 py-1 rounded-full bg-tekoha-secondary/30 text-gray-800">
             {item.category}
           </span>
         </div>
