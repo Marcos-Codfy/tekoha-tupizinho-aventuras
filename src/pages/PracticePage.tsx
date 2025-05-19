@@ -1,4 +1,3 @@
-
 import React, { useState, useRef, useEffect } from 'react';
 import { Button } from '../components/ui/button';
 import { Input } from '../components/ui/input';
@@ -207,15 +206,15 @@ const PracticePage: React.FC = () => {
   ];
 
   return (
-    <div className="min-h-screen flex flex-col p-6 bg-white">
+    <div className="min-h-screen flex flex-col p-6 bg-tekoha-background">
       <header className="flex items-center justify-between mb-6">
-        <h1 className="text-2xl font-bold text-tekoha-accent font-comic">Prática com IA</h1>
+        <h1 className="text-2xl font-bold text-tekoha-highlight font-comic">Prática com IA</h1>
         <div className="flex gap-2">
           <Button 
             variant="outline" 
             size="sm"
             onClick={toggleTranslation}
-            className="focus:ring-2 focus:ring-tekoha-accent/50"
+            className="focus:ring-2 focus:ring-tekoha-accent/50 bg-tekoha-teal text-tekoha-accent hover:bg-tekoha-accent hover:text-tekoha-teal"
           >
             {showTranslation ? 'Ocultar Tradução' : 'Mostrar Tradução'}
           </Button>
@@ -259,7 +258,7 @@ const PracticePage: React.FC = () => {
         </div>
 
         <div className="mb-4">
-          <h3 className="text-sm font-medium text-gray-700 mb-2">Sugestões:</h3>
+          <h3 className="text-sm font-medium text-tekoha-interactive mb-2">Sugestões:</h3>
           <div className="flex flex-wrap gap-2">
             {suggestedPhrases.map((phrase, index) => (
               <Button
@@ -267,7 +266,7 @@ const PracticePage: React.FC = () => {
                 variant="outline"
                 size="sm"
                 onClick={() => setInput(phrase)}
-                className="text-xs"
+                className="text-xs bg-tekoha-highlight text-tekoha-accent hover:bg-tekoha-accent hover:text-tekoha-highlight"
               >
                 {phrase}
               </Button>
@@ -279,7 +278,7 @@ const PracticePage: React.FC = () => {
           <Button
             variant={isRecording ? "destructive" : "outline"}
             size="icon"
-            className={`${isRecording ? "animate-pulse" : ""} focus:ring-2 focus:ring-tekoha-accent/50`}
+            className={`${isRecording ? "animate-pulse" : ""} focus:ring-2 focus:ring-tekoha-accent/50 ${!isRecording ? "bg-tekoha-teal text-tekoha-accent hover:bg-tekoha-accent hover:text-tekoha-teal" : ""}`}
             onClick={toggleRecording}
             title={isRecording ? "Parar gravação" : "Iniciar gravação de voz"}
             aria-label={isRecording ? "Parar gravação" : "Iniciar gravação de voz"}
@@ -291,14 +290,14 @@ const PracticePage: React.FC = () => {
             value={input}
             onChange={(e) => setInput(e.target.value)}
             placeholder="Digite sua mensagem em português..."
-            className="flex-1 border-2 border-tekoha-secondary/30 focus:border-tekoha-secondary focus:ring-2 focus:ring-tekoha-accent/50"
+            className="flex-1 border-2 border-tekoha-secondary/30 focus:border-tekoha-secondary focus:ring-2 focus:ring-tekoha-accent/50 text-tekoha-black"
             onKeyPress={(e) => e.key === 'Enter' && handleSendMessage()}
           />
           
           <Button 
             onClick={handleSendMessage}
             disabled={!input.trim()}
-            className="bg-tekoha-interactive hover:bg-tekoha-interactive/90 active:scale-95 transition-all focus:outline-none focus:ring-2 focus:ring-tekoha-accent/50"
+            className="bg-tekoha-teal hover:bg-tekoha-teal/90 text-tekoha-accent hover:text-tekoha-accent active:scale-95 transition-all focus:outline-none focus:ring-2 focus:ring-tekoha-accent/50"
           >
             <Send className="h-5 w-5" />
           </Button>

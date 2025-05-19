@@ -122,7 +122,7 @@ const TranslatorPage: React.FC = () => {
           variant="outline" 
           size="sm" 
           onClick={handleSwitchDirection}
-          className="flex items-center gap-2 focus:ring-2 focus:ring-tekoha-accent/50 text-tekoha-interactive border-tekoha-interactive"
+          className="flex items-center gap-2 focus:ring-2 focus:ring-tekoha-accent/50 text-tekoha-interactive border-tekoha-highlight bg-tekoha-highlight text-tekoha-accent hover:bg-tekoha-accent hover:text-tekoha-highlight"
           aria-label={`Mudar direção: ${translateDirection === 'tupi-pt' ? 'Tupi para Português' : 'Português para Tupi'}`}
         >
           <span>{translateDirection === 'tupi-pt' ? 'Tupi → Pt' : 'Pt → Tupi'}</span>
@@ -132,7 +132,7 @@ const TranslatorPage: React.FC = () => {
 
       <div className="flex-1 flex flex-col gap-4">
         <div className="bg-white border-2 border-tekoha-secondary/30 rounded-xl shadow-md p-4">
-          <label htmlFor="translationInput" className="text-gray-800 text-sm mb-2 block">
+          <label htmlFor="translationInput" className="text-tekoha-black text-sm mb-2 block">
             {translateDirection === 'tupi-pt' ? 'Texto em Tupi' : 'Texto em Português'}:
           </label>
           <div className="flex gap-2">
@@ -141,12 +141,12 @@ const TranslatorPage: React.FC = () => {
               value={inputText}
               onChange={(e) => setInputText(e.target.value)}
               placeholder={translateDirection === 'tupi-pt' ? 'Digite em Tupi...' : 'Digite em Português...'}
-              className="min-h-[100px] w-full border-2 border-tekoha-secondary/30 focus:border-tekoha-highlight"
+              className="min-h-[100px] w-full border-2 border-tekoha-secondary/30 focus:border-tekoha-highlight text-tekoha-black"
               aria-label={translateDirection === 'tupi-pt' ? 'Digite o texto em Tupi para traduzir' : 'Digite o texto em Português para traduzir'}
             />
             <Button 
               size="icon" 
-              className="bg-tekoha-interactive hover:bg-tekoha-interactive/80 active:scale-95 transition-all focus:outline-none focus:ring-2 focus:ring-tekoha-accent/50"
+              className="bg-tekoha-teal hover:bg-tekoha-teal/80 text-tekoha-accent hover:text-tekoha-accent active:scale-95 transition-all focus:outline-none focus:ring-2 focus:ring-tekoha-accent/50"
               aria-label="Usar microfone para entrada de voz"
               title="Esta funcionalidade será implementada em breve"
             >
@@ -158,14 +158,14 @@ const TranslatorPage: React.FC = () => {
         {outputText && (
           <div className="bg-white border-2 border-tekoha-secondary/30 rounded-xl shadow-md p-4 animate-fade-in">
             <div className="flex justify-between items-center mb-2">
-              <label htmlFor="translationOutput" className="text-gray-800 text-sm block">
+              <label htmlFor="translationOutput" className="text-tekoha-black text-sm block">
                 {translateDirection === 'tupi-pt' ? 'Tradução para Português' : 'Tradução para Tupi'}:
               </label>
               <Button 
                 size="sm" 
                 variant="ghost" 
                 onClick={playSpeech} 
-                className="text-tekoha-interactive focus:ring-2 focus:ring-tekoha-accent/50"
+                className="text-tekoha-secondary hover:text-tekoha-accent focus:ring-2 focus:ring-tekoha-accent/50"
                 aria-label="Ouvir a tradução"
                 title="Esta funcionalidade será implementada em breve"
               >
@@ -199,21 +199,21 @@ const TranslatorPage: React.FC = () => {
           <div className="flex flex-wrap gap-2" role="group" aria-label="Sugestões de palavras para tradução">
             {translateDirection === 'tupi-pt' ? (
               <>
-                <Button variant="outline" size="sm" onClick={() => setInputText('kunhã poranga')} className="border-tekoha-highlight text-tekoha-interactive hover:bg-tekoha-accent/30">kunhã poranga</Button>
-                <Button variant="outline" size="sm" onClick={() => setInputText('nde porã')} className="border-tekoha-highlight text-tekoha-interactive hover:bg-tekoha-accent/30">nde porã</Button>
-                <Button variant="outline" size="sm" onClick={() => setInputText('xe py\'a pe')} className="border-tekoha-highlight text-tekoha-interactive hover:bg-tekoha-accent/30">xe py'a pe</Button>
-                <Button variant="outline" size="sm" onClick={() => setInputText('paranã')} className="border-tekoha-highlight text-tekoha-interactive hover:bg-tekoha-accent/30">paranã</Button>
-                <Button variant="outline" size="sm" onClick={() => setInputText('îaguara')} className="border-tekoha-highlight text-tekoha-interactive hover:bg-tekoha-accent/30">îaguara</Button>
-                <Button variant="outline" size="sm" onClick={() => setInputText('ara porã')} className="border-tekoha-highlight text-tekoha-interactive hover:bg-tekoha-accent/30">ara porã</Button>
+                <Button variant="outline" size="sm" onClick={() => setInputText('kunhã poranga')} className="bg-tekoha-teal text-tekoha-accent hover:bg-tekoha-accent hover:text-tekoha-teal border-tekoha-teal">kunhã poranga</Button>
+                <Button variant="outline" size="sm" onClick={() => setInputText('nde porã')} className="bg-tekoha-teal text-tekoha-accent hover:bg-tekoha-accent hover:text-tekoha-teal border-tekoha-teal">nde porã</Button>
+                <Button variant="outline" size="sm" onClick={() => setInputText('xe py\'a pe')} className="bg-tekoha-teal text-tekoha-accent hover:bg-tekoha-accent hover:text-tekoha-teal border-tekoha-teal">xe py'a pe</Button>
+                <Button variant="outline" size="sm" onClick={() => setInputText('paranã')} className="bg-tekoha-teal text-tekoha-accent hover:bg-tekoha-accent hover:text-tekoha-teal border-tekoha-teal">paranã</Button>
+                <Button variant="outline" size="sm" onClick={() => setInputText('îaguara')} className="bg-tekoha-teal text-tekoha-accent hover:bg-tekoha-accent hover:text-tekoha-teal border-tekoha-teal">îaguara</Button>
+                <Button variant="outline" size="sm" onClick={() => setInputText('ara porã')} className="bg-tekoha-teal text-tekoha-accent hover:bg-tekoha-accent hover:text-tekoha-teal border-tekoha-teal">ara porã</Button>
               </>
             ) : (
               <>
-                <Button variant="outline" size="sm" onClick={() => setInputText('bom dia')} className="border-tekoha-highlight text-tekoha-interactive hover:bg-tekoha-accent/30">bom dia</Button>
-                <Button variant="outline" size="sm" onClick={() => setInputText('água boa')} className="border-tekoha-highlight text-tekoha-interactive hover:bg-tekoha-accent/30">água boa</Button>
-                <Button variant="outline" size="sm" onClick={() => setInputText('eu te amo')} className="border-tekoha-highlight text-tekoha-interactive hover:bg-tekoha-accent/30">eu te amo</Button>
-                <Button variant="outline" size="sm" onClick={() => setInputText('obrigado')} className="border-tekoha-highlight text-tekoha-interactive hover:bg-tekoha-accent/30">obrigado</Button>
-                <Button variant="outline" size="sm" onClick={() => setInputText('floresta')} className="border-tekoha-highlight text-tekoha-interactive hover:bg-tekoha-accent/30">floresta</Button>
-                <Button variant="outline" size="sm" onClick={() => setInputText('pássaro')} className="border-tekoha-highlight text-tekoha-interactive hover:bg-tekoha-accent/30">pássaro</Button>
+                <Button variant="outline" size="sm" onClick={() => setInputText('bom dia')} className="bg-tekoha-teal text-tekoha-accent hover:bg-tekoha-accent hover:text-tekoha-teal border-tekoha-teal">bom dia</Button>
+                <Button variant="outline" size="sm" onClick={() => setInputText('água boa')} className="bg-tekoha-teal text-tekoha-accent hover:bg-tekoha-accent hover:text-tekoha-teal border-tekoha-teal">água boa</Button>
+                <Button variant="outline" size="sm" onClick={() => setInputText('eu te amo')} className="bg-tekoha-teal text-tekoha-accent hover:bg-tekoha-accent hover:text-tekoha-teal border-tekoha-teal">eu te amo</Button>
+                <Button variant="outline" size="sm" onClick={() => setInputText('obrigado')} className="bg-tekoha-teal text-tekoha-accent hover:bg-tekoha-accent hover:text-tekoha-teal border-tekoha-teal">obrigado</Button>
+                <Button variant="outline" size="sm" onClick={() => setInputText('floresta')} className="bg-tekoha-teal text-tekoha-accent hover:bg-tekoha-accent hover:text-tekoha-teal border-tekoha-teal">floresta</Button>
+                <Button variant="outline" size="sm" onClick={() => setInputText('pássaro')} className="bg-tekoha-teal text-tekoha-accent hover:bg-tekoha-accent hover:text-tekoha-teal border-tekoha-teal">pássaro</Button>
               </>
             )}
           </div>

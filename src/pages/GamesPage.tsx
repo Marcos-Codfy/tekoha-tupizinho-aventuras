@@ -1,5 +1,5 @@
 
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { Button } from '../components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '../components/ui/card';
 import { Progress } from '../components/ui/progress';
@@ -264,7 +264,7 @@ const GamesPage: React.FC = () => {
               >
                 <CardHeader>
                   <div className="flex justify-between items-center">
-                    <CardTitle className="text-xl text-tekoha-interactive">
+                    <CardTitle className="text-xl text-tekoha-secondary">
                       {game.title}
                     </CardTitle>
                     <span className="text-3xl">{game.icon}</span>
@@ -275,7 +275,7 @@ const GamesPage: React.FC = () => {
                 </CardHeader>
                 <CardContent>
                   <div className="flex justify-between items-center">
-                    <span className="text-xs px-2 py-1 rounded-full bg-tekoha-secondary/30 text-white/90">
+                    <span className="text-xs px-2 py-1 rounded-full bg-tekoha-teal text-white/90">
                       {game.level}
                     </span>
                     <Progress value={game.id === 'memory' ? 100 : 60} className="w-1/2 h-2" />
@@ -289,9 +289,9 @@ const GamesPage: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen flex flex-col p-6">
+    <div className="min-h-screen flex flex-col p-6 bg-tekoha-background">
       <header className="flex items-center justify-between mb-6">
-        <h1 className="text-2xl font-bold text-tekoha-accent font-comic">Jogos Educativos</h1>
+        <h1 className="text-2xl font-bold text-tekoha-highlight font-comic">Jogos Educativos</h1>
         <Gamepad2 className="h-6 w-6 text-tekoha-interactive" />
       </header>
 

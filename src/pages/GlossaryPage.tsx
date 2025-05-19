@@ -177,10 +177,10 @@ const GlossaryPage: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen flex flex-col p-6 bg-white">
+    <div className="min-h-screen flex flex-col p-6 bg-tekoha-background">
       <header className="flex items-center justify-between mb-6">
-        <h1 className="text-2xl font-bold text-tekoha-interactive font-comic">Glossário Ilustrado</h1>
-        <BookMarked className="h-6 w-6 text-tekoha-interactive" />
+        <h1 className="text-2xl font-bold text-tekoha-highlight font-comic">Glossário Ilustrado</h1>
+        <BookMarked className="h-6 w-6 text-tekoha-highlight" />
       </header>
 
       <div className="flex-1 flex flex-col gap-4">
@@ -190,7 +190,7 @@ const GlossaryPage: React.FC = () => {
             <Input
               type="text"
               placeholder="Buscar palavra em Tupi ou Português..."
-              className="pl-10 border-2 border-tekoha-secondary/30 focus:border-tekoha-secondary"
+              className="pl-10 border-2 border-tekoha-secondary/30 focus:border-tekoha-secondary text-tekoha-black"
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
             />
@@ -199,7 +199,7 @@ const GlossaryPage: React.FC = () => {
             onClick={toggleViewMode}
             variant="outline"
             size="sm"
-            className="flex items-center gap-1 border-tekoha-interactive text-tekoha-interactive hover:bg-tekoha-interactive/10"
+            className="flex items-center gap-1 border-tekoha-interactive text-tekoha-interactive hover:bg-tekoha-accent hover:text-tekoha-interactive"
           >
             <BookOpen className="h-4 w-4" />
             <span>{viewMode === 'grid' ? 'Lista' : 'Grade'}</span>
@@ -267,12 +267,12 @@ const GlossaryCard: React.FC<GlossaryCardProps> = ({ item, onPlayAudio, viewMode
         />
         <div className="flex-1">
           <div className="flex justify-between items-center">
-            <h3 className="text-xl font-bold text-tekoha-interactive">{item.tupiWord}</h3>
+            <h3 className="text-xl font-bold text-tekoha-highlight">{item.tupiWord}</h3>
             <Button 
               variant="ghost" 
               size="sm" 
               onClick={() => onPlayAudio(item.tupiWord)}
-              className="text-tekoha-accent"
+              className="text-tekoha-secondary hover:text-tekoha-accent"
             >
               <Volume2 className="h-5 w-5" />
             </Button>
@@ -300,12 +300,12 @@ const GlossaryCard: React.FC<GlossaryCardProps> = ({ item, onPlayAudio, viewMode
       </div>
       <div className="p-4">
         <div className="flex justify-between items-center">
-          <h3 className="text-xl font-bold text-tekoha-interactive">{item.tupiWord}</h3>
+          <h3 className="text-xl font-bold text-tekoha-highlight">{item.tupiWord}</h3>
           <Button 
             variant="ghost" 
             size="sm" 
             onClick={() => onPlayAudio(item.tupiWord)}
-            className="text-tekoha-accent"
+            className="text-tekoha-secondary hover:text-tekoha-accent"
           >
             <Volume2 className="h-5 w-5" />
           </Button>

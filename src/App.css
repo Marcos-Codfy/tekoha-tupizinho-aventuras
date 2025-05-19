@@ -41,3 +41,26 @@
 .read-the-docs {
   color: #EFEEEA;
 }
+
+/* Additional Tekoha styling */
+.tekoha-card {
+  background-color: #183B4E;
+  border: 1px solid #27548A;
+  border-radius: 1rem;
+  color: #EFEEEA;
+}
+
+.tekoha-input {
+  background-color: rgba(239, 238, 234, 0.1);
+  border: 1px solid rgba(39, 84, 138, 0.5);
+  color: #EFEEEA;
+}
+
+.tekoha-input:focus {
+  border-color: #DDA853;
+}
+
+/* Navigation bar hover effect */
+.nav-item:hover {
+  background-color: #183B4E;
+}

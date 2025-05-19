@@ -33,7 +33,7 @@ const AchievementsPage: React.FC = () => {
       id: 'a1',
       name: 'Primeiras Palavras',
       description: 'Aprenda 10 palavras em Tupi',
-      icon: <BookOpen className="h-5 w-5 text-tekoha-interactive" />,
+      icon: <BookOpen className="h-5 w-5 text-tekoha-highlight" />,
       progress: 70,
       unlocked: false,
       category: 'glossary'
@@ -51,7 +51,7 @@ const AchievementsPage: React.FC = () => {
       id: 'a3',
       name: 'Jogador Dedicado',
       description: 'Jogue todos os jogos disponíveis',
-      icon: <Gamepad2 className="h-5 w-5 text-tekoha-accent" />,
+      icon: <Gamepad2 className="h-5 w-5 text-tekoha-highlight" />,
       progress: 50,
       unlocked: false,
       category: 'games'
@@ -60,7 +60,7 @@ const AchievementsPage: React.FC = () => {
       id: 'a4',
       name: 'Mestre da Memória',
       description: 'Complete o jogo da memória 3 vezes',
-      icon: <Star className="h-5 w-5 text-tekoha-accent" />,
+      icon: <Star className="h-5 w-5 text-tekoha-highlight" />,
       progress: 33,
       unlocked: false,
       category: 'games'
@@ -69,7 +69,7 @@ const AchievementsPage: React.FC = () => {
       id: 'a5',
       name: 'Leitor Ávido',
       description: 'Leia todas as histórias disponíveis',
-      icon: <BookOpen className="h-5 w-5 text-tekoha-interactive" />,
+      icon: <BookOpen className="h-5 w-5 text-tekoha-highlight" />,
       progress: 30,
       unlocked: false,
       category: 'comics'
@@ -151,9 +151,9 @@ const AchievementsPage: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen flex flex-col p-6">
+    <div className="min-h-screen flex flex-col p-6 bg-tekoha-background">
       <header className="flex items-center justify-between mb-6">
-        <h1 className="text-2xl font-bold text-tekoha-accent font-comic">Níveis e Conquistas</h1>
+        <h1 className="text-2xl font-bold text-tekoha-highlight font-comic">Níveis e Conquistas</h1>
         <Trophy className="h-6 w-6 text-tekoha-interactive" />
       </header>
 
@@ -178,18 +178,18 @@ const AchievementsPage: React.FC = () => {
                     {achievement.icon}
                   </div>
                   <div className="ml-3 flex-1">
-                    <h3 className="text-lg font-medium text-white flex items-center">
+                    <h3 className="text-lg font-medium text-tekoha-black flex items-center">
                       {achievement.name}
                       {achievement.unlocked && (
                         <Medal className="h-4 w-4 text-tekoha-accent ml-2" />
                       )}
                     </h3>
-                    <p className="text-white/70 text-sm">{achievement.description}</p>
+                    <p className="text-tekoha-black text-sm">{achievement.description}</p>
                   </div>
                 </div>
                 <div className="mt-3">
                   <Progress value={achievement.progress} className="h-2" />
-                  <div className="flex justify-between text-xs text-white/70 mt-1">
+                  <div className="flex justify-between text-xs text-tekoha-black/70 mt-1">
                     <span>{achievement.progress}%</span>
                     {achievement.unlocked ? (
                       <span className="text-tekoha-accent">Conquistado!</span>
@@ -214,11 +214,11 @@ const AchievementsPage: React.FC = () => {
               >
                 <div className="text-4xl mb-2">{badge.image}</div>
                 <h3 className={`text-lg font-medium ${
-                  badge.unlocked ? 'text-white' : 'text-white/70'
+                  badge.unlocked ? 'text-tekoha-black' : 'text-tekoha-black/70'
                 }`}>
                   {badge.name}
                 </h3>
-                <p className="text-white/70 text-sm mt-1">{badge.description}</p>
+                <p className="text-tekoha-black/70 text-sm mt-1">{badge.description}</p>
                 <div className="mt-3">
                   <span className={`text-xs px-2 py-1 rounded-full ${
                     badge.level === 'bronze' ? 'bg-orange-700/30 text-orange-200' :
@@ -239,8 +239,8 @@ const AchievementsPage: React.FC = () => {
           <div className="tekoha-card p-5">
             <div className="flex justify-between items-center mb-6">
               <div>
-                <h3 className="text-xl font-medium text-white">Nível {learningStats.level}</h3>
-                <p className="text-white/70">Aprendiz de Tupi</p>
+                <h3 className="text-xl font-medium text-tekoha-black">Nível {learningStats.level}</h3>
+                <p className="text-tekoha-black/70">Aprendiz de Tupi</p>
               </div>
               <div className="bg-tekoha-accent rounded-full w-16 h-16 flex items-center justify-center text-3xl">
                 {learningStats.level}
@@ -248,7 +248,7 @@ const AchievementsPage: React.FC = () => {
             </div>
             
             <div className="mb-4">
-              <div className="flex justify-between text-sm text-white/70 mb-1">
+              <div className="flex justify-between text-sm text-tekoha-black/70 mb-1">
                 <span>XP: {learningStats.xp}/{learningStats.nextLevel}</span>
                 <span>{Math.round(learningStats.xp/learningStats.nextLevel*100)}%</span>
               </div>
@@ -284,12 +284,12 @@ const StatCard: React.FC<StatCardProps> = ({ title, value, icon }) => {
   return (
     <div className="bg-tekoha-background/60 p-4 rounded-xl border border-tekoha-secondary/30">
       <div className="flex items-center mb-2">
-        <div className="p-2 rounded-full bg-tekoha-secondary/20 text-white">
+        <div className="p-2 rounded-full bg-tekoha-secondary/20 text-tekoha-black">
           {icon}
         </div>
       </div>
-      <div className="text-2xl font-bold text-white">{value}</div>
-      <div className="text-sm text-white/70">{title}</div>
+      <div className="text-2xl font-bold text-tekoha-black">{value}</div>
+      <div className="text-sm text-tekoha-black/70">{title}</div>
     </div>
   );
 };
