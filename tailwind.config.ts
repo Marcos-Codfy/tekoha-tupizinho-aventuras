@@ -64,11 +64,11 @@ export default {
 					ring: 'hsl(var(--sidebar-ring))'
 				},
 				tekoha: {
-					background: '#5c323e', // color1 - dark background
-					secondary: '#a82743', // color2 - secondary (buttons and menus)
-					highlight: '#e15e32', // color3 - visual details and highlights
-					interactive: '#c0d23e', // color4 - interactive elements
-					accent: '#e5f04c', // color5 - eye-catching accents
+					background: '#183B4E', // New background color
+					secondary: '#27548A', // New secondary color
+					highlight: '#DDA853', // New highlight (secondary) color
+					interactive: '#EFEEEA', // New font color for interactive elements
+					accent: '#F3F3E0', // New hover color
 				}
 			},
 			borderRadius: {
