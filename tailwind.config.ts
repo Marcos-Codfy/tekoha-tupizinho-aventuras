@@ -1,4 +1,3 @@
-
 import type { Config } from "tailwindcss";
 
 export default {
@@ -69,6 +68,7 @@ export default {
 					highlight: '#DDA853', // New highlight (secondary) color
 					interactive: '#EFEEEA', // New font color for interactive elements
 					accent: '#F3F3E0', // New hover color
+					teal: '#309898', // New teal color
 				}
 			},
 			borderRadius: {

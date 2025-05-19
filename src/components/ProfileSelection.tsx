@@ -69,7 +69,7 @@ const ProfileSelection: React.FC<ProfileSelectionProps> = ({ onProfileSelect }) 
   return (
     <div className="min-h-screen flex flex-col p-6" role="main">
       <div className="flex-1 flex flex-col items-center justify-center">
-        <h1 className="text-3xl font-bold text-tekoha-accent mb-10 text-center font-comic">
+        <h1 className="text-3xl font-bold text-tekoha-highlight mb-10 text-center font-comic">
           Escolha seu Perfil
         </h1>
         
@@ -81,7 +81,7 @@ const ProfileSelection: React.FC<ProfileSelectionProps> = ({ onProfileSelect }) 
           {profiles.map((profile) => (
             <div
               key={profile.id}
-              className={`profile-card ${selectedProfile === profile.id ? 'border-tekoha-accent shadow-lg scale-105' : ''}`}
+              className={`profile-card ${selectedProfile === profile.id ? 'border-tekoha-highlight shadow-lg scale-105' : ''}`}
               onClick={() => handleProfileSelect(profile.id, profile.message)}
               onKeyDown={(e) => {
                 if (e.key === 'Enter' || e.key === ' ') {

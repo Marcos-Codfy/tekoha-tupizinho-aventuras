@@ -27,14 +27,14 @@ const HomePage: React.FC = () => {
       id: 'games',
       name: 'Jogos Educativos',
       icon: <Gamepad2 className="h-8 w-8" />,
-      color: 'bg-tekoha-interactive',
+      color: 'bg-tekoha-teal',
       path: '/games'
     },
     {
       id: 'comics',
       name: 'Histórias em Quadrinhos',
       icon: <BookOpen className="h-8 w-8" />,
-      color: 'bg-tekoha-accent/90',
+      color: 'bg-tekoha-teal',
       path: '/comics'
     },
     {
@@ -72,20 +72,20 @@ const HomePage: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen flex flex-col p-6 bg-white">
+    <div className="min-h-screen flex flex-col p-6 bg-tekoha-background">
       <header className="flex items-center justify-between mb-8">
-        <h1 className="text-3xl font-bold text-tekoha-accent font-comic">TEKOHÁ</h1>
+        <h1 className="text-3xl font-bold text-tekoha-highlight font-comic">TEKOHÁ</h1>
         <button 
           className="p-2 rounded-full bg-tekoha-secondary/20 hover:bg-tekoha-secondary/30 active:scale-95 transition-all focus:outline-none focus:ring-2 focus:ring-tekoha-accent/50"
           onClick={() => navigate('/settings')}
           aria-label="Ir para configurações"
         >
-          <Settings className="h-6 w-6 text-gray-700" />
+          <Settings className="h-6 w-6 text-tekoha-interactive" />
         </button>
       </header>
 
       <div className="flex-1">
-        <h2 className="text-2xl font-bold text-gray-800 mb-6">Painel Principal</h2>
+        <h2 className="text-2xl font-bold text-tekoha-interactive mb-6">Painel Principal</h2>
         
         <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
           {features.map((feature) => (
@@ -111,10 +111,10 @@ const HomePage: React.FC = () => {
         </div>
         
         <div className="mt-8">
-          <h3 className="text-xl font-bold text-gray-800 mb-4">Progresso Semanal</h3>
+          <h3 className="text-xl font-bold text-tekoha-interactive mb-4">Progresso Semanal</h3>
           <div className="bg-white border-2 border-tekoha-secondary/30 rounded-xl p-4 shadow-md">
             <div className="w-full bg-gray-200 rounded-full h-4 mb-1">
-              <div className="bg-tekoha-accent h-4 rounded-full" style={{width: '35%'}}></div>
+              <div className="bg-tekoha-highlight h-4 rounded-full" style={{width: '35%'}}></div>
             </div>
             <div className="flex justify-between text-sm text-gray-600">
               <span>35% concluído</span>
