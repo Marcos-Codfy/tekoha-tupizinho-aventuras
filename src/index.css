@@ -1,4 +1,3 @@
-
 @import url('https://fonts.googleapis.com/css2?family=Varela+Round&family=Comic+Neue:wght@400;700&display=swap');
 
 @tailwind base;
@@ -8,43 +7,43 @@
 @layer base {
   :root {
     --background: 0 0% 100%; 
-    --foreground: 203 51% 20%; /* Based on #183B4E background */
+    --foreground: 23 33% 21%; /* Based on #492F24 background */
 
     --card: 0 0% 100%;
-    --card-foreground: 203 51% 20%;
+    --card-foreground: 23 33% 21%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 203 51% 20%;
+    --popover-foreground: 23 33% 21%;
 
     --primary: 210 55% 35%;  /* #27548A - secondary color */
-    --primary-foreground: 60 36% 92%; /* #EFEEEA - font color */
+    --primary-foreground: 60 36% 92%; /* #F3F3E0 - font color */
 
-    --secondary: 39 65% 59%; /* #DDA853 - secondary color */
-    --secondary-foreground: 60 36% 92%; /* #EFEEEA - font color */
+    --secondary: 43 87% 57%; /* #F1B434 - secondary color */
+    --secondary-foreground: 60 36% 92%; /* #F3F3E0 - font color */
 
-    --muted: 203 51% 20%;
+    --muted: 23 33% 21%;
     --muted-foreground: 60 36% 92%;
 
     --accent: 60 50% 92%; /* #F3F3E0 - hover color */
-    --accent-foreground: 203 51% 20%; /* #183B4E - background color */
+    --accent-foreground: 23 33% 21%; /* #492F24 - background color */
 
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 60 36% 92%; /* #EFEEEA - font color */
+    --destructive: 9 70% 53%;
+    --destructive-foreground: 60 36% 92%; /* #F3F3E0 - font color */
 
-    --border: 210 55% 35%; /* #27548A - secondary color */
-    --input: 210 55% 35%; /* #27548A - secondary color */
-    --ring: 39 65% 59%; /* #DDA853 - secondary color */
+    --border: 9 70% 53%; /* #C5472B - red color */
+    --input: 9 70% 53%; /* #C5472B - red color */
+    --ring: 43 87% 57%; /* #F1B434 - secondary color */
 
     --radius: 1rem;
 
-    --sidebar-background: 203 51% 20%; /* #183B4E */
-    --sidebar-foreground: 60 36% 92%; /* #EFEEEA */
-    --sidebar-primary: 210 55% 35%; /* #27548A */
-    --sidebar-primary-foreground: 60 36% 92%; /* #EFEEEA */
-    --sidebar-accent: 39 65% 59%; /* #DDA853 */
-    --sidebar-accent-foreground: 60 36% 92%; /* #EFEEEA */
-    --sidebar-border: 210 55% 35%; /* #27548A */
-    --sidebar-ring: 39 65% 59%; /* #DDA853 */
+    --sidebar-background: 23 33% 21%; /* #492F24 */
+    --sidebar-foreground: 60 36% 92%; /* #F3F3E0 */
+    --sidebar-primary: 9 70% 53%; /* #C5472B */
+    --sidebar-primary-foreground: 60 36% 92%; /* #F3F3E0 */
+    --sidebar-accent: 43 87% 57%; /* #F1B434 */
+    --sidebar-accent-foreground: 60 36% 92%; /* #F3F3E0 */
+    --sidebar-border: 9 70% 53%; /* #C5472B */
+    --sidebar-ring: 43 87% 57%; /* #F1B434 */
   }
 
   html, body {
@@ -53,8 +52,8 @@
 
   body {
     @apply bg-tekoha-background text-tekoha-interactive font-rounded min-h-screen;
-    background-image: radial-gradient(circle at top left, rgba(39, 84, 138, 0.1) 0%, transparent 40%),
-                      radial-gradient(circle at bottom right, rgba(221, 168, 83, 0.1) 0%, transparent 40%);
+    background-image: radial-gradient(circle at top left, rgba(197, 71, 43, 0.1) 0%, transparent 40%),
+                      radial-gradient(circle at bottom right, rgba(241, 180, 52, 0.1) 0%, transparent 40%);
     background-attachment: fixed;
   }
 
@@ -65,23 +64,23 @@
 
 @layer components {
   .tekoha-card {
-    @apply bg-white border-2 border-tekoha-secondary/30 rounded-2xl shadow-lg overflow-hidden text-tekoha-background;
+    @apply bg-white/10 backdrop-blur-sm border-2 border-tekoha-red/30 rounded-2xl shadow-lg overflow-hidden text-tekoha-interactive;
   }
   
   .tekoha-button {
-    @apply bg-tekoha-secondary hover:bg-tekoha-secondary/90 text-tekoha-interactive font-medium rounded-full py-2 md:py-3 px-4 md:px-6 transition-all duration-200 flex items-center justify-center gap-2 shadow-md hover:shadow-lg focus:ring-2 focus:ring-tekoha-highlight/50 focus:outline-none active:scale-95;
+    @apply bg-tekoha-red hover:bg-tekoha-red/90 text-tekoha-interactive font-medium rounded-full py-2 md:py-3 px-4 md:px-6 transition-all duration-200 flex items-center justify-center gap-2 shadow-md hover:shadow-lg focus:ring-2 focus:ring-tekoha-highlight/50 focus:outline-none active:scale-95;
   }
   
   .tekoha-button-outline {
-    @apply border-2 border-tekoha-secondary bg-transparent hover:bg-tekoha-accent/30 text-tekoha-secondary hover:text-tekoha-secondary font-medium rounded-full py-2 px-4 md:py-2.5 md:px-5 transition-all duration-200 active:scale-95;
+    @apply border-2 border-tekoha-highlight bg-transparent hover:bg-tekoha-red/30 text-tekoha-highlight hover:text-tekoha-highlight font-medium rounded-full py-2 px-4 md:py-2.5 md:px-5 transition-all duration-200 active:scale-95;
   }
   
   .tekoha-input {
-    @apply bg-white border-2 border-tekoha-secondary/30 rounded-xl p-2 md:p-3 focus:border-tekoha-secondary focus:outline-none focus:ring-2 focus:ring-tekoha-highlight/50 text-tekoha-background placeholder:text-gray-400;
+    @apply bg-white/10 backdrop-blur-sm border-2 border-tekoha-red/30 rounded-xl p-2 md:p-3 focus:border-tekoha-highlight focus:outline-none focus:ring-2 focus:ring-tekoha-highlight/50 text-tekoha-interactive placeholder:text-gray-400;
   }
   
   .profile-card {
-    @apply flex flex-col items-center justify-center gap-2 md:gap-3 bg-tekoha-secondary/10 hover:bg-tekoha-accent/30 p-3 md:p-5 rounded-xl transition-all duration-300 cursor-pointer border-2 border-transparent hover:border-tekoha-highlight active:scale-95;
+    @apply flex flex-col items-center justify-center gap-2 md:gap-3 bg-tekoha-red/10 hover:bg-tekoha-accent/30 p-3 md:p-5 rounded-xl transition-all duration-300 cursor-pointer border-2 border-transparent hover:border-tekoha-highlight active:scale-95;
   }
 
   .mascot-container {
@@ -107,7 +106,7 @@
   width: 40px;
   height: 40px;
   border-radius: 50%;
-  background: conic-gradient(#0000 10%, #DDA853); /* Updated color */
+  background: conic-gradient(#0000 10%, #F1B434); /* Updated color */
   -webkit-mask: radial-gradient(farthest-side,#0000 calc(100% - 8px),#000 0);
   animation: spin 1s infinite linear;
 }

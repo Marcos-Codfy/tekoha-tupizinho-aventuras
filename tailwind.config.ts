@@ -1,4 +1,3 @@
-
 import type { Config } from "tailwindcss";
 
 export default {
@@ -64,13 +63,15 @@ export default {
 					ring: 'hsl(var(--sidebar-ring))'
 				},
 				tekoha: {
-					background: '#183B4E', // Dark blue background
+					background: '#492F24', // Dark brown/chocolate background
 					secondary: '#27548A', // Light blue secondary color
-					highlight: '#DDA853', // Orange highlight color
-					interactive: '#EFEEEA', // Off-white text color
+					highlight: '#F1B434', // Gold/yellow highlight color
+					interactive: '#F3F3E0', // Off-white text color
 					accent: '#F3F3E0', // Off-white hover color
 					teal: '#309898', // Green/teal color
 					black: '#000000', // Black text color
+					red: '#C5472B', // Orange-red color for buttons
+					green: '#BDBE30', // Lime green color for buttons
 				}
 			},
 			borderRadius: {

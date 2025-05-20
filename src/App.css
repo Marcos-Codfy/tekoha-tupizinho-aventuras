@@ -13,7 +13,7 @@
   transition: filter 300ms;
 }
 .logo:hover {
-  filter: drop-shadow(0 0 2em #DDA853aa);
+  filter: drop-shadow(0 0 2em #F1B434aa);
 }
 .logo.react:hover {
   filter: drop-shadow(0 0 2em #27548Aaa);
@@ -44,23 +44,36 @@
 
 /* Additional Tekoha styling */
 .tekoha-card {
-  background-color: #183B4E;
-  border: 1px solid #27548A;
+  background-color: #492F24;
+  border: 1px solid #C5472B;
   border-radius: 1rem;
-  color: #EFEEEA;
+  color: #F3F3E0;
 }
 
 .tekoha-input {
-  background-color: rgba(239, 238, 234, 0.1);
-  border: 1px solid rgba(39, 84, 138, 0.5);
-  color: #EFEEEA;
+  background-color: rgba(243, 243, 224, 0.1);
+  border: 1px solid rgba(197, 71, 43, 0.5);
+  color: #F3F3E0;
 }
 
 .tekoha-input:focus {
-  border-color: #DDA853;
+  border-color: #F1B434;
 }
 
 /* Navigation bar hover effect */
 .nav-item:hover {
-  background-color: #183B4E;
+  background-color: #492F24;
+}
+
+/* Indigenous pattern borders */
+.indigenous-border-top {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100%' height='10' viewBox='0 0 100 10' fill='none'%3E%3Cpath d='M0,5 Q5,0 10,5 Q15,10 20,5 Q25,0 30,5 Q35,10 40,5 Q45,0 50,5 Q55,10 60,5 Q65,0 70,5 Q75,10 80,5 Q85,0 90,5 Q95,10 100,5' stroke='%23F1B434' stroke-width='2' fill='none'/%3E%3C/svg%3E");
+  height: 10px;
+  background-repeat: repeat-x;
+}
+
+.indigenous-border-bottom {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100%' height='10' viewBox='0 0 100 10' fill='none'%3E%3Cpath d='M0,5 Q5,10 10,5 Q15,0 20,5 Q25,10 30,5 Q35,0 40,5 Q45,10 50,5 Q55,0 60,5 Q65,10 70,5 Q75,0 80,5 Q85,10 90,5 Q95,0 100,5' stroke='%23F1B434' stroke-width='2' fill='none'/%3E%3C/svg%3E");
+  height: 10px;
+  background-repeat: repeat-x;
 }
