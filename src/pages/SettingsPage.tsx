@@ -73,7 +73,7 @@ const SettingsPage: React.FC = () => {
     <div className="min-h-screen flex flex-col p-6 bg-tekoha-background">
       <header className="flex items-center justify-between mb-6">
         <h1 className="text-2xl font-bold text-tekoha-highlight font-comic">Configurações</h1>
-        <Settings className="h-6 w-6 text-tekoha-highlight" />
+        <Settings className="h-6 w-6 text-tekoha-red" />
       </header>
 
       <div className="flex-1">
@@ -83,7 +83,7 @@ const SettingsPage: React.FC = () => {
           <div className="space-y-4">
             <div className="flex items-center gap-4">
               <div className="bg-tekoha-secondary/20 p-3 rounded-full">
-                <User className="h-6 w-6 text-tekoha-highlight" />
+                <User className="h-6 w-6 text-tekoha-red" />
               </div>
               <div className="flex-1">
                 <p className="text-[#F2F2F2] font-medium">Professor</p>
@@ -95,13 +95,13 @@ const SettingsPage: React.FC = () => {
                 onClick={handleChangeProfile}
                 className="flex items-center gap-1 text-tekoha-highlight border-tekoha-highlight hover:bg-tekoha-background hover:text-tekoha-accent"
               >
-                <UserCircle2 className="h-4 w-4" />
+                <UserCircle2 className="h-4 w-4 text-tekoha-red" />
                 Trocar Perfil
               </Button>
             </div>
             
             <div className="flex items-center gap-3 mt-4">
-              <Mail className="h-5 w-5 text-tekoha-secondary" />
+              <Mail className="h-5 w-5 text-tekoha-red" />
               <Input 
                 type="email" 
                 placeholder="Seu email (opcional)"
@@ -119,7 +119,7 @@ const SettingsPage: React.FC = () => {
           <div className="space-y-4">
             <div className="flex justify-between items-center">
               <div className="flex items-center gap-2">
-                {theme === 'dark' ? <Moon className="h-5 w-5 text-tekoha-secondary" /> : <Sun className="h-5 w-5 text-tekoha-secondary" />}
+                {theme === 'dark' ? <Moon className="h-5 w-5 text-tekoha-red" /> : <Sun className="h-5 w-5 text-tekoha-red" />}
                 <span className="text-[#F2F2F2]">Tema</span>
               </div>
               
@@ -164,7 +164,7 @@ const SettingsPage: React.FC = () => {
           <div className="space-y-4">
             <div className="flex justify-between items-center">
               <div className="flex items-center gap-2">
-                {soundEnabled ? <Volume2 className="h-5 w-5 text-tekoha-secondary" /> : <VolumeX className="h-5 w-5 text-tekoha-secondary" />}
+                {soundEnabled ? <Volume2 className="h-5 w-5 text-tekoha-red" /> : <VolumeX className="h-5 w-5 text-tekoha-red" />}
                 <span className="text-[#F2F2F2]">Sons</span>
               </div>
               <Switch checked={soundEnabled} onCheckedChange={handleSoundToggle} />
@@ -197,7 +197,7 @@ const SettingsPage: React.FC = () => {
           <div className="space-y-4">
             <div className="flex justify-between items-center">
               <div className="flex items-center gap-2">
-                <Download className="h-5 w-5 text-tekoha-secondary" />
+                <Download className="h-5 w-5 text-tekoha-red" />
                 <span className="text-[#F2F2F2]">Modo Offline</span>
               </div>
               <Switch checked={offlineMode} onCheckedChange={handleOfflineToggle} />
@@ -205,7 +205,7 @@ const SettingsPage: React.FC = () => {
             
             <div className="mt-4 pt-4 border-t border-tekoha-secondary/30">
               <div className="flex items-center gap-2">
-                <Laptop className="h-5 w-5 text-tekoha-secondary" />
+                <Laptop className="h-5 w-5 text-tekoha-red" />
                 <span className="text-[#F2F2F2]">Versão do App</span>
                 <span className="text-tekoha-highlight text-sm ml-auto">1.0.0</span>
               </div>
