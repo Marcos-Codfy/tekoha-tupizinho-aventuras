@@ -3,6 +3,7 @@ import { Button } from '../components/ui/button';
 import { Card, CardContent } from '../components/ui/card';
 import { BookOpen, ChevronLeft, ChevronRight, Volume2 } from 'lucide-react';
 import Mascot from '../components/Mascot';
+import BackButton from '../components/BackButton';
 
 interface ComicPage {
   id: number;
@@ -273,7 +274,10 @@ const ComicsPage: React.FC = () => {
   return (
     <div className="min-h-screen flex flex-col p-6">
       <header className="flex items-center justify-between mb-6">
-        <h1 className="text-2xl font-bold text-tekoha-accent font-comic">Histórias em Quadrinhos</h1>
+        <div className="flex items-center gap-2">
+          <BackButton />
+          <h1 className="text-2xl font-bold text-tekoha-accent font-comic">Histórias em Quadrinhos</h1>
+        </div>
         <BookOpen className="h-6 w-6 text-tekoha-interactive" />
       </header>
 

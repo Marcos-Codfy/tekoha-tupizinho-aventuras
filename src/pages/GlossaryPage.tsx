@@ -1,10 +1,10 @@
-
 import React, { useState } from 'react';
 import { Input } from '../components/ui/input';
 import { Button } from '../components/ui/button';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '../components/ui/tabs';
 import { BookMarked, Search, Volume2, BookOpen } from 'lucide-react';
 import Mascot from '../components/Mascot';
+import BackButton from '../components/BackButton';
 
 interface GlossaryItem {
   id: string;
@@ -227,8 +227,11 @@ const GlossaryPage: React.FC = () => {
   return (
     <div className="min-h-screen flex flex-col p-6 bg-tekoha-background">
       <header className="flex items-center justify-between mb-6">
-        <h1 className="text-2xl font-bold text-tekoha-highlight font-comic">Glossário Ilustrado</h1>
-        <BookMarked className="h-6 w-6 text-tekoha-highlight" />
+        <div className="flex items-center gap-2">
+          <BackButton />
+          <h1 className="text-2xl font-bold text-tekoha-highlight font-comic">Glossário</h1>
+        </div>
+        <BookMarked className="h-6 w-6 text-tekoha-red" />
       </header>
 
       <div className="flex-1 flex flex-col gap-4">

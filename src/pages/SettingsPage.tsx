@@ -8,6 +8,7 @@ import { Label } from '../components/ui/label';
 import { Settings, VolumeX, Volume2, Download, Laptop, Moon, Sun, User, Mail, UserCircle2 } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import Mascot from '../components/Mascot';
+import BackButton from '../components/BackButton';
 
 const SettingsPage: React.FC = () => {
   const navigate = useNavigate();
@@ -72,7 +73,10 @@ const SettingsPage: React.FC = () => {
   return (
     <div className="min-h-screen flex flex-col p-6 bg-tekoha-background">
       <header className="flex items-center justify-between mb-6">
-        <h1 className="text-2xl font-bold text-tekoha-highlight font-comic">Configurações</h1>
+        <div className="flex items-center gap-2">
+          <BackButton />
+          <h1 className="text-2xl font-bold text-tekoha-highlight font-comic">Configurações</h1>
+        </div>
         <Settings className="h-6 w-6 text-tekoha-red" />
       </header>
 

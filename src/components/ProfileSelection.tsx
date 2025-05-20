@@ -1,8 +1,8 @@
-
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { UserCircle2, Stethoscope, BookOpen, GraduationCap, Heart, Users } from 'lucide-react';
 import Mascot from './Mascot';
+import BackButton from './BackButton';
 
 interface ProfileSelectionProps {
   onProfileSelect?: (profileId: string) => void;
@@ -65,6 +65,10 @@ const ProfileSelection: React.FC<ProfileSelectionProps> = ({ onProfileSelect }) 
 
   return (
     <div className="min-h-screen flex flex-col p-6 bg-tekoha-background" role="main">
+      <div className="absolute top-6 left-6">
+        <BackButton to="/" />
+      </div>
+      
       <div className="indigenous-border-top w-full mb-6"></div>
       
       <div className="flex-1 flex flex-col items-center justify-center">

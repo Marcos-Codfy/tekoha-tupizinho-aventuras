@@ -4,7 +4,8 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '../co
 import { Progress } from '../components/ui/progress';
 import { Gamepad2, CheckCircle, XCircle } from 'lucide-react';
 import Mascot from '../components/Mascot';
- 
+import BackButton from '../components/BackButton';
+
 const GamesPage: React.FC = () => {
   const [activeGame, setActiveGame] = useState<string | null>(null);
   const [mascotMessage, setMascotMessage] = useState('Vamos jogar e aprender Tupi! Escolha um jogo para começar.');
@@ -313,8 +314,11 @@ const GamesPage: React.FC = () => {
   return (
     <div className="min-h-screen flex flex-col p-6 bg-tekoha-background">
       <header className="flex items-center justify-between mb-6">
-        <h1 className="text-2xl font-bold text-tekoha-highlight font-comic">Jogos Educativos</h1>
-        <Gamepad2 className="h-6 w-6 text-tekoha-interactive" />
+        <div className="flex items-center gap-2">
+          <BackButton />
+          <h1 className="text-2xl font-bold text-tekoha-highlight font-comic">Jogos</h1>
+        </div>
+        <Gamepad2 className="h-6 w-6 text-tekoha-red" />
       </header>
 
       <div className="flex-1">

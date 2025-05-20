@@ -4,6 +4,7 @@ import Mascot from '../components/Mascot';
 import { Button } from '../components/ui/button';
 import { Textarea } from '../components/ui/textarea';
 import { MessageSquare, Mic, Volume2, ArrowRightLeft } from 'lucide-react';
+import BackButton from '../components/BackButton';
 
 const TranslatorPage: React.FC = () => {
   const [inputText, setInputText] = useState('');
@@ -117,7 +118,10 @@ const TranslatorPage: React.FC = () => {
   return (
     <div className="min-h-screen flex flex-col p-6 bg-tekoha-background" role="main">
       <header className="flex items-center justify-between mb-6">
-        <h1 className="text-2xl font-bold text-tekoha-highlight font-comic">Tradutor</h1>
+        <div className="flex items-center gap-2">
+          <BackButton />
+          <h1 className="text-2xl font-bold text-tekoha-highlight font-comic">Tradutor</h1>
+        </div>
         <Button 
           variant="outline" 
           size="sm" 

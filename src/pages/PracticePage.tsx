@@ -1,8 +1,10 @@
+
 import React, { useState, useRef, useEffect } from 'react';
 import { Button } from '../components/ui/button';
 import { Input } from '../components/ui/input';
 import { Mic, Send, StopCircle } from 'lucide-react';
 import Mascot from '../components/Mascot';
+import BackButton from '../components/BackButton';
 
 const PracticePage: React.FC = () => {
   const [messages, setMessages] = useState<{text: string, sender: 'user' | 'mascot', translated?: string}[]>([
@@ -214,7 +216,10 @@ const PracticePage: React.FC = () => {
   return (
     <div className="min-h-screen flex flex-col p-6 bg-tekoha-background">
       <header className="flex items-center justify-between mb-6">
-        <h1 className="text-2xl font-bold text-tekoha-highlight font-comic">Prática com IA</h1>
+        <div className="flex items-center gap-2">
+          <BackButton />
+          <h1 className="text-2xl font-bold text-tekoha-highlight font-comic">Prática com IA</h1>
+        </div>
         <div className="flex gap-2">
           <Button 
             variant="outline" 
