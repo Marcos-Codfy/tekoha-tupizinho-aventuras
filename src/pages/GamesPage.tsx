@@ -1,4 +1,3 @@
-
 import React, { useState, useRef, useEffect } from 'react';
 import { Button } from '../components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '../components/ui/card';
@@ -14,6 +13,7 @@ const GamesPage: React.FC = () => {
   const [flippedCards, setFlippedCards] = useState<number[]>([]);
   const [matchedPairs, setMatchedPairs] = useState<number[]>([]);
   const [score, setScore] = useState(0);
+  const [shuffledCards, setShuffledCards] = useState<any[]>([]);
   
   // Word Blocks Game state
   const [selectedBlocks, setSelectedBlocks] = useState<string[]>([]);
@@ -70,6 +70,28 @@ const GamesPage: React.FC = () => {
     { id: 16, content: 'Sol', pairId: 8 },
   ];
 
+  // Function to shuffle cards
+  const shuffleCards = () => {
+    // Create a copy of the cards array
+    const cardsCopy = [...memoryCards];
+    // Shuffle the cards
+    for (let i = cardsCopy.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [cardsCopy[i], cardsCopy[j]] = [cardsCopy[j], cardsCopy[i]];
+    }
+    setShuffledCards(cardsCopy);
+  };
+
+  // Initialize shuffled cards when game is selected
+  useEffect(() => {
+    if (activeGame === 'memory') {
+      shuffleCards();
+      setFlippedCards([]);
+      setMatchedPairs([]);
+      setScore(0);
+    }
+  }, [activeGame]);
+
   // Word blocks for the sentence building game
   const wordBlocks = [
     'Xe', 'nde', 'a-jusu', 'oka', 'porã'
@@ -100,8 +122,8 @@ const GamesPage: React.FC = () => {
     // Check for matches if we have 2 cards flipped
     if (newFlippedCards.length === 2) {
       const [firstCardId, secondCardId] = newFlippedCards;
-      const firstCard = memoryCards.find(card => card.id === firstCardId);
-      const secondCard = memoryCards.find(card => card.id === secondCardId);
+      const firstCard = shuffledCards.find(card => card.id === firstCardId);
+      const secondCard = shuffledCards.find(card => card.id === secondCardId);
       
       if (firstCard && secondCard && firstCard.pairId === secondCard.pairId) {
         // Match found
@@ -163,7 +185,7 @@ const GamesPage: React.FC = () => {
               <Button size="sm" onClick={() => setActiveGame(null)}>Voltar</Button>
             </div>
             <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
-              {memoryCards.map((card) => (
+              {shuffledCards.map((card) => (
                 <div
                   key={card.id}
                   className={`aspect-square flex items-center justify-center rounded-lg text-lg font-medium transition-all duration-300 cursor-pointer

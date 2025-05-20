@@ -178,23 +178,23 @@ const AchievementsPage: React.FC = () => {
                     {achievement.icon}
                   </div>
                   <div className="ml-3 flex-1">
-                    <h3 className="text-lg font-medium text-tekoha-black flex items-center">
+                    <h3 className="text-lg font-medium text-[#F2F2F2] flex items-center">
                       {achievement.name}
                       {achievement.unlocked && (
                         <Medal className="h-4 w-4 text-tekoha-accent ml-2" />
                       )}
                     </h3>
-                    <p className="text-tekoha-black text-sm">{achievement.description}</p>
+                    <p className="text-[#F2F2F2] text-sm">{achievement.description}</p>
                   </div>
                 </div>
                 <div className="mt-3">
                   <Progress value={achievement.progress} className="h-2" />
-                  <div className="flex justify-between text-xs text-tekoha-black/70 mt-1">
+                  <div className="flex justify-between text-xs text-[#F2F2F2] mt-1">
                     <span>{achievement.progress}%</span>
                     {achievement.unlocked ? (
                       <span className="text-tekoha-accent">Conquistado!</span>
                     ) : (
-                      <span>Em progresso</span>
+                      <span className="text-[#F2F2F2]">Em progresso</span>
                     )}
                   </div>
                 </div>
@@ -214,11 +214,11 @@ const AchievementsPage: React.FC = () => {
               >
                 <div className="text-4xl mb-2">{badge.image}</div>
                 <h3 className={`text-lg font-medium ${
-                  badge.unlocked ? 'text-tekoha-black' : 'text-tekoha-black/70'
+                  badge.unlocked ? 'text-[#F2F2F2]' : 'text-[#F2F2F2]/70'
                 }`}>
                   {badge.name}
                 </h3>
-                <p className="text-tekoha-black/70 text-sm mt-1">{badge.description}</p>
+                <p className="text-[#F2F2F2] text-sm mt-1">{badge.description}</p>
                 <div className="mt-3">
                   <span className={`text-xs px-2 py-1 rounded-full ${
                     badge.level === 'bronze' ? 'bg-orange-700/30 text-orange-200' :
@@ -239,16 +239,16 @@ const AchievementsPage: React.FC = () => {
           <div className="tekoha-card p-5">
             <div className="flex justify-between items-center mb-6">
               <div>
-                <h3 className="text-xl font-medium text-tekoha-black">Nível {learningStats.level}</h3>
-                <p className="text-tekoha-black/70">Aprendiz de Tupi</p>
+                <h3 className="text-xl font-medium text-[#F2F2F2]">Nível {learningStats.level}</h3>
+                <p className="text-[#F2F2F2]">Aprendiz de Tupi</p>
               </div>
-              <div className="bg-tekoha-accent rounded-full w-16 h-16 flex items-center justify-center text-3xl">
+              <div className="bg-tekoha-accent rounded-full w-16 h-16 flex items-center justify-center text-3xl text-black">
                 {learningStats.level}
               </div>
             </div>
             
             <div className="mb-4">
-              <div className="flex justify-between text-sm text-tekoha-black/70 mb-1">
+              <div className="flex justify-between text-sm text-[#F2F2F2] mb-1">
                 <span>XP: {learningStats.xp}/{learningStats.nextLevel}</span>
                 <span>{Math.round(learningStats.xp/learningStats.nextLevel*100)}%</span>
               </div>
@@ -284,12 +284,12 @@ const StatCard: React.FC<StatCardProps> = ({ title, value, icon }) => {
   return (
     <div className="bg-tekoha-background/60 p-4 rounded-xl border border-tekoha-secondary/30">
       <div className="flex items-center mb-2">
-        <div className="p-2 rounded-full bg-tekoha-secondary/20 text-tekoha-black">
+        <div className="p-2 rounded-full bg-tekoha-secondary/20 text-[#F2F2F2]">
           {icon}
         </div>
       </div>
-      <div className="text-2xl font-bold text-tekoha-black">{value}</div>
-      <div className="text-sm text-tekoha-black/70">{title}</div>
+      <div className="text-2xl font-bold text-[#F2F2F2]">{value}</div>
+      <div className="text-sm text-[#F2F2F2]">{title}</div>
     </div>
   );
 };

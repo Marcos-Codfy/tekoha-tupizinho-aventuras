@@ -71,7 +71,6 @@ const GlossaryPage: React.FC = () => {
       category: 'lugares',
       imageUrl: 'https://images.unsplash.com/photo-1580587771525-78b9dba3b914?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1742&q=80'
     },
-    // Novas palavras adicionadas
     {
       id: '7',
       tupiWord: 'Ara',
@@ -135,6 +134,55 @@ const GlossaryPage: React.FC = () => {
       grammarClass: 'Substantivo',
       category: 'animais',
       imageUrl: 'https://images.unsplash.com/photo-1444464666168-49d633b86797?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1738&q=80'
+    },
+    // Novas palavras adicionadas
+    {
+      id: '15',
+      tupiWord: 'Pirá',
+      ptTranslation: 'Peixe',
+      grammarClass: 'Substantivo',
+      category: 'animais',
+      imageUrl: 'https://images.unsplash.com/photo-1524704654690-b56c05c78a00?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80'
+    },
+    {
+      id: '16',
+      tupiWord: 'Tayra',
+      ptTranslation: 'Filha',
+      grammarClass: 'Substantivo',
+      category: 'pessoas',
+      imageUrl: 'https://images.unsplash.com/photo-1543342384-1f1350e27861?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1734&q=80'
+    },
+    {
+      id: '17',
+      tupiWord: 'Ta\'yra',
+      ptTranslation: 'Filho',
+      grammarClass: 'Substantivo',
+      category: 'pessoas',
+      imageUrl: 'https://images.unsplash.com/photo-1545205895-a708087acb5d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1742&q=80'
+    },
+    {
+      id: '18',
+      tupiWord: 'Ybytú',
+      ptTranslation: 'Vento',
+      grammarClass: 'Substantivo',
+      category: 'natureza',
+      imageUrl: 'https://images.unsplash.com/photo-1533656139395-ce317fd6ce07?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80'
+    },
+    {
+      id: '19',
+      tupiWord: 'Amana',
+      ptTranslation: 'Chuva',
+      grammarClass: 'Substantivo',
+      category: 'natureza',
+      imageUrl: 'https://images.unsplash.com/photo-1428592953211-077101b2021b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80'
+    },
+    {
+      id: '20',
+      tupiWord: 'Kuaracy',
+      ptTranslation: 'Sol',
+      grammarClass: 'Substantivo',
+      category: 'natureza',
+      imageUrl: 'https://images.unsplash.com/photo-1622396481328-9b1b78cdd9fd?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1742&q=80'
     }
   ];
 

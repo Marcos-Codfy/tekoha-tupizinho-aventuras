@@ -86,8 +86,8 @@ const SettingsPage: React.FC = () => {
                 <User className="h-6 w-6 text-tekoha-highlight" />
               </div>
               <div className="flex-1">
-                <p className="text-tekoha-secondary font-medium">Professor</p>
-                <p className="text-tekoha-secondary text-sm">Perfil selecionado</p>
+                <p className="text-[#F2F2F2] font-medium">Professor</p>
+                <p className="text-[#F2F2F2] text-sm">Perfil selecionado</p>
               </div>
               <Button 
                 variant="outline" 
@@ -120,38 +120,38 @@ const SettingsPage: React.FC = () => {
             <div className="flex justify-between items-center">
               <div className="flex items-center gap-2">
                 {theme === 'dark' ? <Moon className="h-5 w-5 text-tekoha-secondary" /> : <Sun className="h-5 w-5 text-tekoha-secondary" />}
-                <span className="text-tekoha-secondary">Tema</span>
+                <span className="text-[#F2F2F2]">Tema</span>
               </div>
               
               <RadioGroup defaultValue={theme} onValueChange={handleThemeChange} className="flex gap-2">
                 <div className="flex items-center space-x-1">
                   <RadioGroupItem value="dark" id="theme-dark" />
-                  <Label htmlFor="theme-dark" className="text-tekoha-secondary">Escuro</Label>
+                  <Label htmlFor="theme-dark" className="text-[#F2F2F2]">Escuro</Label>
                 </div>
                 <div className="flex items-center space-x-1">
                   <RadioGroupItem value="light" id="theme-light" />
-                  <Label htmlFor="theme-light" className="text-tekoha-secondary">Claro</Label>
+                  <Label htmlFor="theme-light" className="text-[#F2F2F2]">Claro</Label>
                 </div>
               </RadioGroup>
             </div>
             
             <div className="flex justify-between items-center">
               <div className="flex items-center gap-2">
-                <span className="text-tekoha-secondary">Tamanho da Fonte</span>
+                <span className="text-[#F2F2F2]">Tamanho da Fonte</span>
               </div>
               
               <RadioGroup defaultValue={fontSize} onValueChange={setFontSize} className="flex gap-2">
                 <div className="flex items-center space-x-1">
                   <RadioGroupItem value="small" id="font-small" />
-                  <Label htmlFor="font-small" className="text-tekoha-secondary">P</Label>
+                  <Label htmlFor="font-small" className="text-[#F2F2F2]">P</Label>
                 </div>
                 <div className="flex items-center space-x-1">
                   <RadioGroupItem value="medium" id="font-medium" />
-                  <Label htmlFor="font-medium" className="text-tekoha-secondary">M</Label>
+                  <Label htmlFor="font-medium" className="text-[#F2F2F2]">M</Label>
                 </div>
                 <div className="flex items-center space-x-1">
                   <RadioGroupItem value="large" id="font-large" />
-                  <Label htmlFor="font-large" className="text-tekoha-secondary">G</Label>
+                  <Label htmlFor="font-large" className="text-[#F2F2F2]">G</Label>
                 </div>
               </RadioGroup>
             </div>
@@ -165,14 +165,14 @@ const SettingsPage: React.FC = () => {
             <div className="flex justify-between items-center">
               <div className="flex items-center gap-2">
                 {soundEnabled ? <Volume2 className="h-5 w-5 text-tekoha-secondary" /> : <VolumeX className="h-5 w-5 text-tekoha-secondary" />}
-                <span className="text-tekoha-secondary">Sons</span>
+                <span className="text-[#F2F2F2]">Sons</span>
               </div>
               <Switch checked={soundEnabled} onCheckedChange={handleSoundToggle} />
             </div>
             
             <div className="flex justify-between items-center">
               <div className="flex items-center gap-2">
-                <span className="text-tekoha-secondary">Notificações</span>
+                <span className="text-[#F2F2F2]">Notificações</span>
               </div>
               <Switch checked={notificationsEnabled} onCheckedChange={setNotificationsEnabled} />
             </div>
@@ -184,7 +184,7 @@ const SettingsPage: React.FC = () => {
                   alt="Tupizinho"
                   className="w-5 h-5" 
                 />
-                <span className="text-tekoha-secondary">Tupizinho (Mascote)</span>
+                <span className="text-[#F2F2F2]">Tupizinho (Mascote)</span>
               </div>
               <Switch checked={mascotEnabled} onCheckedChange={handleMascotToggle} />
             </div>
@@ -198,7 +198,7 @@ const SettingsPage: React.FC = () => {
             <div className="flex justify-between items-center">
               <div className="flex items-center gap-2">
                 <Download className="h-5 w-5 text-tekoha-secondary" />
-                <span className="text-tekoha-secondary">Modo Offline</span>
+                <span className="text-[#F2F2F2]">Modo Offline</span>
               </div>
               <Switch checked={offlineMode} onCheckedChange={handleOfflineToggle} />
             </div>
@@ -206,7 +206,7 @@ const SettingsPage: React.FC = () => {
             <div className="mt-4 pt-4 border-t border-tekoha-secondary/30">
               <div className="flex items-center gap-2">
                 <Laptop className="h-5 w-5 text-tekoha-secondary" />
-                <span className="text-tekoha-secondary">Versão do App</span>
+                <span className="text-[#F2F2F2]">Versão do App</span>
                 <span className="text-tekoha-highlight text-sm ml-auto">1.0.0</span>
               </div>
             </div>

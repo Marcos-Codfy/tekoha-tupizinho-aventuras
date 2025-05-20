@@ -195,14 +195,20 @@ const PracticePage: React.FC = () => {
     );
   };
 
-  // Sugestões de frases para praticar
+  // Sugestões de frases para praticar - ampliado
   const suggestedPhrases = [
     "Olá, como vai?",
     "Meu nome é...",
     "Quero aprender Tupi",
     "Como se diz água?",
     "O que é sol em Tupi?",
-    "Me ensine sobre animais"
+    "Me ensine sobre animais",
+    "Como se diz obrigado?",
+    "Qual é a palavra para lua?",
+    "Como está o tempo hoje?",
+    "Qual é o seu animal favorito?",
+    "Conte-me uma história",
+    "Gosto muito de aprender idiomas"
   ];
 
   return (

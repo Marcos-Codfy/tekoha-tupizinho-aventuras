@@ -43,6 +43,27 @@ const ComicsPage: React.FC = () => {
       coverImage: 'https://images.unsplash.com/photo-1509259305526-037fbbf698fa?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1636&q=80',
       pages: 5,
       level: 'Avançado'
+    },
+    {
+      id: 4,
+      title: 'O Boto Cor-de-Rosa',
+      coverImage: 'https://images.unsplash.com/photo-1589634749000-1e72e2c5f71f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1769&q=80',
+      pages: 3,
+      level: 'Intermediário'
+    },
+    {
+      id: 5,
+      title: 'A Festa da Jurema',
+      coverImage: 'https://images.unsplash.com/photo-1566807387450-b74aea0e727e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1746&q=80',
+      pages: 4,
+      level: 'Iniciante'
+    },
+    {
+      id: 6,
+      title: 'Mboitatá: O Guardião das Florestas',
+      coverImage: 'https://images.unsplash.com/photo-1542273917363-3b1817f69a2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1744&q=80',
+      pages: 5,
+      level: 'Avançado'
     }
   ];
 
@@ -151,7 +172,7 @@ const ComicsPage: React.FC = () => {
                 />
               </div>
               <CardContent className="p-4">
-                <h3 className="text-lg font-bold text-tekoha-interactive">{comic.title}</h3>
+                <h3 className="text-lg font-bold text-black">{comic.title}</h3>
                 <div className="flex justify-between items-center mt-2">
                   <span className="text-xs text-white/70">{comic.pages} páginas</span>
                   <span className="text-xs px-2 py-1 rounded-full bg-tekoha-secondary/30 text-white/90">
@@ -173,7 +194,7 @@ const ComicsPage: React.FC = () => {
           <Button variant="outline" size="sm" onClick={() => setActiveComic(null)}>
             <ChevronLeft className="h-4 w-4 mr-1" /> Voltar
           </Button>
-          <h3 className="text-lg font-medium text-white">{page.title}</h3>
+          <h3 className="text-lg font-medium text-black">{page.title}</h3>
           <Button 
             variant="outline" 
             size="sm"
