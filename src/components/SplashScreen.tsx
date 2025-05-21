@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useIsMobile } from '@/hooks/use-mobile';
+import BackButton from './BackButton';
 
 const SplashScreen: React.FC = () => {
   const navigate = useNavigate();
@@ -15,9 +16,10 @@ const SplashScreen: React.FC = () => {
     }, 500);
 
     // Navigate to profile selection after splash screen duration
+    // Updated to 10 seconds (10000ms) from the previous 3.5 seconds
     const navigationTimer = setTimeout(() => {
       navigate('/profile-selection');
-    }, 3500);
+    }, 10000);
 
     return () => {
       clearTimeout(mascotTimer);
