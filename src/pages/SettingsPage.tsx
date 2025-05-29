@@ -1,5 +1,5 @@
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Button } from '../components/ui/button';
 import { Input } from '../components/ui/input';
 import { Switch } from '../components/ui/switch';
@@ -21,9 +21,56 @@ const SettingsPage: React.FC = () => {
   const [theme, setTheme] = useState('dark');
   const [mascotMessage, setMascotMessage] = useState('Aqui você pode personalizar o aplicativo do seu jeito!');
 
+  // Apply font size to document root
+  useEffect(() => {
+    const root = document.documentElement;
+    
+    switch (fontSize) {
+      case 'small':
+        root.style.fontSize = '14px';
+        break;
+      case 'medium':
+        root.style.fontSize = '16px';
+        break;
+      case 'large':
+        root.style.fontSize = '20px';
+        break;
+      default:
+        root.style.fontSize = '16px';
+    }
+    
+    // Save to localStorage
+    localStorage.setItem('fontSize', fontSize);
+  }, [fontSize]);
+
+  // Load font size from localStorage on component mount
+  useEffect(() => {
+    const savedFontSize = localStorage.getItem('fontSize');
+    if (savedFontSize) {
+      setFontSize(savedFontSize);
+    }
+  }, []);
+
   const handleThemeChange = (value: string) => {
     setTheme(value);
     setMascotMessage('Tema alterado! ' + (value === 'dark' ? 'Tema escuro é o padrão do app.' : 'Tema claro ativado!'));
+  };
+
+  const handleFontSizeChange = (value: string) => {
+    setFontSize(value);
+    let message = 'Tamanho da fonte alterado! ';
+    switch (value) {
+      case 'small':
+        message += 'Fonte pequena selecionada.';
+        break;
+      case 'medium':
+        message += 'Fonte média (padrão) selecionada.';
+        break;
+      case 'large':
+        message += 'Fonte grande selecionada.';
+        break;
+    }
+    setMascotMessage(message);
   };
 
   const handleOfflineToggle = () => {
@@ -144,18 +191,18 @@ const SettingsPage: React.FC = () => {
                 <span className="text-[#F2F2F2]">Tamanho da Fonte</span>
               </div>
               
-              <RadioGroup defaultValue={fontSize} onValueChange={setFontSize} className="flex gap-2">
+              <RadioGroup value={fontSize} onValueChange={handleFontSizeChange} className="flex gap-2">
                 <div className="flex items-center space-x-1">
                   <RadioGroupItem value="small" id="font-small" />
-                  <Label htmlFor="font-small" className="text-[#F2F2F2]">P</Label>
+                  <Label htmlFor="font-small" className="text-[#F2F2F2] text-xs">P</Label>
                 </div>
                 <div className="flex items-center space-x-1">
                   <RadioGroupItem value="medium" id="font-medium" />
-                  <Label htmlFor="font-medium" className="text-[#F2F2F2]">M</Label>
+                  <Label htmlFor="font-medium" className="text-[#F2F2F2] text-base">M</Label>
                 </div>
                 <div className="flex items-center space-x-1">
                   <RadioGroupItem value="large" id="font-large" />
-                  <Label htmlFor="font-large" className="text-[#F2F2F2]">G</Label>
+                  <Label htmlFor="font-large" className="text-[#F2F2F2] text-lg">G</Label>
                 </div>
               </RadioGroup>
             </div>
