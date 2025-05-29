@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Input } from '../components/ui/input';
 import { Button } from '../components/ui/button';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '../components/ui/tabs';
@@ -20,6 +20,15 @@ const GlossaryPage: React.FC = () => {
   const [activeCategory, setActiveCategory] = useState('all');
   const [mascotMessage, setMascotMessage] = useState('No glossário você encontra palavras em Tupi com imagens e áudio! Explore por categorias!');
   const [viewMode, setViewMode] = useState<'grid' | 'list'>('grid');
+  const [apiKey, setApiKey] = useState('');
+
+  // Load API key from localStorage
+  useEffect(() => {
+    const savedApiKey = localStorage.getItem('elevenLabsApiKey');
+    if (savedApiKey) {
+      setApiKey(savedApiKey);
+    }
+  }, []);
 
   // Glossário ampliado com mais palavras
   const glossaryItems: GlossaryItem[] = [
@@ -216,7 +225,11 @@ const GlossaryPage: React.FC = () => {
   };
 
   const playAudio = (word: string) => {
-    setMascotMessage(`A pronúncia de "${word}" será implementada em breve!`);
+    if (!apiKey) {
+      setMascotMessage('Configure sua chave do ElevenLabs nas configurações para ouvir o áudio!');
+    } else {
+      setMascotMessage(`Reproduzindo "${word}"...`);
+    }
   };
 
   const toggleViewMode = () => {
@@ -308,6 +321,15 @@ interface GlossaryCardProps {
 }
 
 const GlossaryCard: React.FC<GlossaryCardProps> = ({ item, onPlayAudio, viewMode }) => {
+  const [apiKey, setApiKey] = useState('');
+
+  useEffect(() => {
+    const savedApiKey = localStorage.getItem('elevenLabsApiKey');
+    if (savedApiKey) {
+      setApiKey(savedApiKey);
+    }
+  }, []);
+
   if (viewMode === 'list') {
     return (
       <div className="animate-fade-in bg-white border-2 border-tekoha-secondary/30 rounded-xl shadow-md p-3 flex items-center">
@@ -319,14 +341,13 @@ const GlossaryCard: React.FC<GlossaryCardProps> = ({ item, onPlayAudio, viewMode
         <div className="flex-1">
           <div className="flex justify-between items-center">
             <h3 className="text-xl font-bold text-tekoha-highlight">{item.tupiWord}</h3>
-            <Button 
-              variant="ghost" 
-              size="sm" 
-              onClick={() => onPlayAudio(item.tupiWord)}
+            <AudioButton
+              text={item.tupiWord}
+              apiKey={apiKey}
+              variant="ghost"
+              size="sm"
               className="text-tekoha-secondary hover:text-tekoha-accent"
-            >
-              <Volume2 className="h-5 w-5" />
-            </Button>
+            />
           </div>
           <p className="text-gray-800 mt-1">{item.ptTranslation}</p>
           <div className="flex justify-between mt-2">
@@ -352,14 +373,13 @@ const GlossaryCard: React.FC<GlossaryCardProps> = ({ item, onPlayAudio, viewMode
       <div className="p-4">
         <div className="flex justify-between items-center">
           <h3 className="text-xl font-bold text-tekoha-highlight">{item.tupiWord}</h3>
-          <Button 
-            variant="ghost" 
-            size="sm" 
-            onClick={() => onPlayAudio(item.tupiWord)}
+          <AudioButton
+            text={item.tupiWord}
+            apiKey={apiKey}
+            variant="ghost"
+            size="sm"
             className="text-tekoha-secondary hover:text-tekoha-accent"
-          >
-            <Volume2 className="h-5 w-5" />
-          </Button>
+          />
         </div>
         <p className="text-gray-800 mt-1">{item.ptTranslation}</p>
         <div className="flex justify-between mt-2">

@@ -1,5 +1,6 @@
 
 import { useNavigate } from 'react-router-dom';
+import { useTextToSpeech } from './useTextToSpeech';
 
 interface UseSettingsHandlersProps {
   setTheme: (theme: string) => void;
@@ -8,9 +9,11 @@ interface UseSettingsHandlersProps {
   setMascotEnabled: (enabled: boolean) => void;
   setSoundEnabled: (enabled: boolean) => void;
   setMascotMessage: (message: string) => void;
+  setElevenLabsApiKey: (key: string) => void;
   offlineMode: boolean;
   mascotEnabled: boolean;
   soundEnabled: boolean;
+  elevenLabsApiKey: string;
 }
 
 export const useSettingsHandlers = ({
@@ -20,11 +23,14 @@ export const useSettingsHandlers = ({
   setMascotEnabled,
   setSoundEnabled,
   setMascotMessage,
+  setElevenLabsApiKey,
   offlineMode,
   mascotEnabled,
-  soundEnabled
+  soundEnabled,
+  elevenLabsApiKey
 }: UseSettingsHandlersProps) => {
   const navigate = useNavigate();
+  const { speak } = useTextToSpeech({ apiKey: elevenLabsApiKey });
 
   const handleThemeChange = (value: string) => {
     setTheme(value);
@@ -79,6 +85,18 @@ export const useSettingsHandlers = ({
     setSoundEnabled(!soundEnabled);
   };
 
+  const handleApiKeyChange = (key: string) => {
+    setElevenLabsApiKey(key);
+    if (key) {
+      setMascotMessage('Chave da API salva! Agora posso falar com você!');
+    }
+  };
+
+  const handleTestAudio = () => {
+    speak('Îauê! Xe rerá Tupizinho. Agora posso falar com você em português!');
+    setMascotMessage('Testando áudio... Se você não ouvir nada, verifique sua chave da API.');
+  };
+
   const handleSave = () => {
     setMascotMessage('Configurações salvas com sucesso!');
   };
@@ -98,6 +116,8 @@ export const useSettingsHandlers = ({
     handleOfflineToggle,
     handleMascotToggle,
     handleSoundToggle,
+    handleApiKeyChange,
+    handleTestAudio,
     handleSave,
     handleChangeProfile
   };

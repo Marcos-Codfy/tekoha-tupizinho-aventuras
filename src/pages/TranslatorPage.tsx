@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Mascot from '../components/Mascot';
+import AudioButton from '../components/AudioButton';
 import { Button } from '../components/ui/button';
 import { Textarea } from '../components/ui/textarea';
 import { MessageSquare, Mic, Volume2, ArrowRightLeft } from 'lucide-react';
@@ -10,6 +11,15 @@ const TranslatorPage: React.FC = () => {
   const [outputText, setOutputText] = useState('');
   const [translateDirection, setTranslateDirection] = useState<'tupi-pt' | 'pt-tupi'>('tupi-pt');
   const [mascotMessage, setMascotMessage] = useState('Posso te ajudar a traduzir frases em Tupi para Português e vice-versa!');
+  const [apiKey, setApiKey] = useState('');
+
+  // Load API key from localStorage
+  useEffect(() => {
+    const savedApiKey = localStorage.getItem('elevenLabsApiKey');
+    if (savedApiKey) {
+      setApiKey(savedApiKey);
+    }
+  }, []);
 
   // Dicionário muito ampliado de traduções
   const mockTupiToPt: Record<string, string> = {
@@ -204,7 +214,11 @@ const TranslatorPage: React.FC = () => {
   };
 
   const playSpeech = () => {
-    setMascotMessage('Função de áudio será implementada em breve!');
+    if (!apiKey) {
+      setMascotMessage('Configure sua chave do ElevenLabs nas configurações para ouvir o áudio!');
+    } else if (!outputText) {
+      setMascotMessage('Primeiro traduza algum texto para ouvir o áudio!');
+    }
   };
 
   return (
@@ -257,16 +271,13 @@ const TranslatorPage: React.FC = () => {
               <label htmlFor="translationOutput" className="text-tekoha-black text-sm block">
                 {translateDirection === 'tupi-pt' ? 'Tradução para Português' : 'Tradução para Tupi'}:
               </label>
-              <Button 
-                size="sm" 
-                variant="ghost" 
-                onClick={playSpeech} 
+              <AudioButton
+                text={outputText}
+                apiKey={apiKey}
+                variant="ghost"
+                size="sm"
                 className="text-tekoha-secondary hover:text-tekoha-accent focus:ring-2 focus:ring-tekoha-accent/50"
-                aria-label="Ouvir a tradução"
-                title="Esta funcionalidade será implementada em breve"
-              >
-                <Volume2 className="h-5 w-5" aria-hidden="true" />
-              </Button>
+              />
             </div>
             <div 
               id="translationOutput"
