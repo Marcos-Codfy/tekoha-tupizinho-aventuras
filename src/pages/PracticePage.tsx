@@ -1,4 +1,3 @@
-
 import React, { useState, useRef, useEffect } from 'react';
 import { Button } from '../components/ui/button';
 import { Input } from '../components/ui/input';
@@ -26,7 +25,7 @@ const PracticePage: React.FC = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
   }, [messages]);
 
-  // Dicionário ampliado de respostas
+  // Dicionário ampliado de respostas - vocabulário expandido
   const mascotResponses: {[key: string]: {tupi: string, pt: string}} = {
     'oi': { 
       tupi: 'Îauê! Marã taîné ndé rekó?', 
@@ -123,6 +122,39 @@ const PracticePage: React.FC = () => {
     'lua': { 
       tupi: 'Îasy porã pytuna-pe. Îasy oîemoesaîng paranã-pe.', 
       pt: 'A lua é bonita à noite. A lua se reflete no rio.' 
+    },
+    // Novas palavras adicionadas
+    'família': { 
+      tupi: 'Tetama. Xe tetama xe rory.', 
+      pt: 'Família. Minha família me alegra.' 
+    },
+    'trabalho': { 
+      tupi: 'Mbo\'esaba. Xe ambo\'e kunumĩ-gûé.', 
+      pt: 'Trabalho. Eu ensino crianças.' 
+    },
+    'amor': { 
+      tupi: 'Aypxó. Xe aypxó nde.', 
+      pt: 'Amor. Eu te amo.' 
+    },
+    'feliz': { 
+      tupi: 'Rurí. Xe rurí nde rehebe.', 
+      pt: 'Feliz. Estou feliz com você.' 
+    },
+    'triste': { 
+      tupi: 'Poxyî. Nde poxyî?', 
+      pt: 'Triste. Você está triste?' 
+    },
+    'música': { 
+      tupi: 'Purakî. Xe ausub purakî.', 
+      pt: 'Música. Eu gosto de música.' 
+    },
+    'dança': { 
+      tupi: 'Poraîé. Oro-poraîé!', 
+      pt: 'Dança. Vamos dançar!' 
+    },
+    'cantar': { 
+      tupi: 'Purakî. Re purakî porã.', 
+      pt: 'Cantar. Você canta bem.' 
     }
   };
 
@@ -197,7 +229,7 @@ const PracticePage: React.FC = () => {
     );
   };
 
-  // Sugestões de frases para praticar - ampliado
+  // Sugestões de frases para praticar - ampliadas
   const suggestedPhrases = [
     "Olá, como vai?",
     "Meu nome é...",
@@ -210,7 +242,12 @@ const PracticePage: React.FC = () => {
     "Como está o tempo hoje?",
     "Qual é o seu animal favorito?",
     "Conte-me uma história",
-    "Gosto muito de aprender idiomas"
+    "Gosto muito de aprender idiomas",
+    "Como é sua família?",
+    "Você gosta de música?",
+    "Vamos dançar?",
+    "Estou feliz hoje",
+    "O trabalho é importante"
   ];
 
   return (
@@ -243,7 +280,7 @@ const PracticePage: React.FC = () => {
                 {msg.sender === 'mascot' && (
                   <div className="flex-shrink-0 mr-2">
                     <img 
-                      src="/lovable-uploads/cc714f54-db55-4def-8d46-4721adaffc91.png"
+                      src="/lovable-uploads/6f29f8fc-ca10-4611-9454-4097efd86f58.png"
                       alt="Tupizinho" 
                       className="w-10 h-10 object-contain"
                     />

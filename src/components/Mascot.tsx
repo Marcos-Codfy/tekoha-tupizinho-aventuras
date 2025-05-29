@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { useIsMobile } from '@/hooks/use-mobile';
 
@@ -15,7 +14,7 @@ const Mascot: React.FC<MascotProps> = ({
   message,
   autoHide = true,
   size = 'md',
-  hideTime = 3000
+  hideTime = 2000
 }) => {
   const [isVisible, setIsVisible] = useState(!!message);
   const [showMessage, setShowMessage] = useState(!!message);

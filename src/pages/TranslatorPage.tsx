@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import Mascot from '../components/Mascot';
 import { Button } from '../components/ui/button';
@@ -12,7 +11,7 @@ const TranslatorPage: React.FC = () => {
   const [translateDirection, setTranslateDirection] = useState<'tupi-pt' | 'pt-tupi'>('tupi-pt');
   const [mascotMessage, setMascotMessage] = useState('Posso te ajudar a traduzir frases em Tupi para Português e vice-versa!');
 
-  // Dicionário ampliado de traduções
+  // Dicionário muito ampliado de traduções
   const mockTupiToPt: Record<string, string> = {
     'kunhã poranga': 'mulher bonita',
     'nde porã': 'você é bonito/bom',
@@ -33,6 +32,53 @@ const TranslatorPage: React.FC = () => {
     'abá': 'homem, pessoa',
     'kurumĩ': 'menino',
     'kunhãtaĩ': 'menina',
+    'tetama': 'família',
+    'mbo\'esaba': 'trabalho',
+    'aypxó': 'amor',
+    'rurí': 'feliz',
+    'poxyî': 'triste',
+    'purakî': 'música, cantar',
+    'poraîé': 'dança',
+    'xe rerá': 'meu nome',
+    'nde rerá': 'seu nome',
+    'xe ausub': 'eu gosto',
+    'xe r-ory': 'me alegra',
+    'aguîebéte': 'obrigado',
+    'îauê': 'olá',
+    'îawewé': 'tchau',
+    'porã': 'bom, bonito',
+    'poxy': 'feio, ruim',
+    'tuixáua': 'chefe',
+    'morubixaba': 'chefe principal',
+    'xe ratá': 'meu fogo',
+    'xe ro\'y': 'meu frio',
+    'xe rexáî': 'eu choro',
+    'xe rory': 'eu me alegro',
+    'xe resá': 'meu olho',
+    'xe rembi\'u': 'minha comida',
+    'xe roka': 'minha casa',
+    'tembi\'u': 'comida',
+    'îbotî': 'flor',
+    'ybyrá': 'árvore',
+    'yby': 'terra',
+    'tatá': 'fogo',
+    'ybytú': 'vento',
+    'amana': 'chuva',
+    'moroti': 'branco',
+    'piranga': 'vermelho',
+    'oby': 'azul, verde',
+    'asáî': 'dor',
+    'katu': 'bom',
+    'soó': 'animal',
+    'pirá': 'peixe',
+    'guyra': 'pássaro',
+    'tapyra': 'anta',
+    'tatu': 'tatu',
+    'kaitú': 'macaco',
+    'akutí': 'cutia',
+    'kururu': 'sapo',
+    'mboyá': 'cobra',
+    'nhandú': 'ema'
   };
 
   const mockPtToTupi: Record<string, string> = {
@@ -56,6 +102,52 @@ const TranslatorPage: React.FC = () => {
     'terra': 'yby',
     'pássaro': 'guyrá',
     'onça': 'îaguara',
+    'família': 'tetama',
+    'trabalho': 'mbo\'esaba',
+    'amor': 'aypxó',
+    'feliz': 'rurí',
+    'triste': 'poxyî',
+    'música': 'purakî',
+    'dança': 'poraîé',
+    'meu nome': 'xe rerá',
+    'seu nome': 'nde rerá',
+    'eu gosto': 'xe ausub',
+    'olá': 'îauê',
+    'tchau': 'îawewé',
+    'bom': 'porã',
+    'bonito': 'porã',
+    'feio': 'poxy',
+    'ruim': 'poxy',
+    'chefe': 'tuixáua',
+    'comida': 'tembi\'u',
+    'flor': 'îbotî',
+    'árvore': 'ybyrá',
+    'vento': 'ybytú',
+    'chuva': 'amana',
+    'branco': 'moroti',
+    'vermelho': 'piranga',
+    'azul': 'oby',
+    'verde': 'oby',
+    'dor': 'asáî',
+    'animal': 'soó',
+    'peixe': 'pirá',
+    'anta': 'tapyra',
+    'tatu': 'tatu',
+    'macaco': 'kaitú',
+    'cutia': 'akutí',
+    'sapo': 'kururu',
+    'cobra': 'mboyá',
+    'ema': 'nhandú',
+    'jacaré': 'îakaré',
+    'mato': 'kaá',
+    'pessoa': 'abá',
+    'cantar': 'purakî',
+    'alegrar': 'ory',
+    'chorar': 'exáî',
+    'olho': 'esá',
+    'minha casa': 'xe roka',
+    'meu fogo': 'xe ratá',
+    'meu frio': 'xe ro\'y'
   };
 
   // Tradução
@@ -209,6 +301,8 @@ const TranslatorPage: React.FC = () => {
                 <Button variant="outline" size="sm" onClick={() => setInputText('paranã')} className="bg-tekoha-teal text-tekoha-accent hover:bg-tekoha-accent hover:text-tekoha-teal border-tekoha-teal">paranã</Button>
                 <Button variant="outline" size="sm" onClick={() => setInputText('îaguara')} className="bg-tekoha-teal text-tekoha-accent hover:bg-tekoha-accent hover:text-tekoha-teal border-tekoha-teal">îaguara</Button>
                 <Button variant="outline" size="sm" onClick={() => setInputText('ara porã')} className="bg-tekoha-teal text-tekoha-accent hover:bg-tekoha-accent hover:text-tekoha-teal border-tekoha-teal">ara porã</Button>
+                <Button variant="outline" size="sm" onClick={() => setInputText('tetama')} className="bg-tekoha-teal text-tekoha-accent hover:bg-tekoha-accent hover:text-tekoha-teal border-tekoha-teal">tetama</Button>
+                <Button variant="outline" size="sm" onClick={() => setInputText('purakî')} className="bg-tekoha-teal text-tekoha-accent hover:bg-tekoha-accent hover:text-tekoha-teal border-tekoha-teal">purakî</Button>
               </>
             ) : (
               <>
@@ -218,6 +312,8 @@ const TranslatorPage: React.FC = () => {
                 <Button variant="outline" size="sm" onClick={() => setInputText('obrigado')} className="bg-tekoha-teal text-tekoha-accent hover:bg-tekoha-accent hover:text-tekoha-teal border-tekoha-teal">obrigado</Button>
                 <Button variant="outline" size="sm" onClick={() => setInputText('floresta')} className="bg-tekoha-teal text-tekoha-accent hover:bg-tekoha-accent hover:text-tekoha-teal border-tekoha-teal">floresta</Button>
                 <Button variant="outline" size="sm" onClick={() => setInputText('pássaro')} className="bg-tekoha-teal text-tekoha-accent hover:bg-tekoha-accent hover:text-tekoha-teal border-tekoha-teal">pássaro</Button>
+                <Button variant="outline" size="sm" onClick={() => setInputText('família')} className="bg-tekoha-teal text-tekoha-accent hover:bg-tekoha-accent hover:text-tekoha-teal border-tekoha-teal">família</Button>
+                <Button variant="outline" size="sm" onClick={() => setInputText('música')} className="bg-tekoha-teal text-tekoha-accent hover:bg-tekoha-accent hover:text-tekoha-teal border-tekoha-teal">música</Button>
               </>
             )}
           </div>

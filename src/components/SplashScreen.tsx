@@ -16,10 +16,10 @@ const SplashScreen: React.FC = () => {
     }, 500);
 
     // Navigate to profile selection after splash screen duration
-    // Updated to 10 seconds (10000ms) from the previous 3.5 seconds
+    // Reduzido para 3 segundos para acelerar o carregamento
     const navigationTimer = setTimeout(() => {
       navigate('/profile-selection');
-    }, 10000);
+    }, 3000);
 
     return () => {
       clearTimeout(mascotTimer);
