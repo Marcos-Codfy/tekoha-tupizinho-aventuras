@@ -7,7 +7,7 @@ import { useTextToSpeech } from '../hooks/useTextToSpeech';
 interface AudioButtonProps {
   text: string;
   apiKey?: string;
-  size?: 'sm' | 'md' | 'lg';
+  size?: 'sm' | 'lg' | 'default' | 'icon';
   variant?: 'ghost' | 'outline' | 'default';
   className?: string;
 }

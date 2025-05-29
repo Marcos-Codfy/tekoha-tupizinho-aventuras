@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from 'react';
 import { useIsMobile } from '@/hooks/use-mobile';
 
@@ -29,7 +30,6 @@ const Mascot: React.FC<MascotProps> = ({
       if (autoHide) {
         const timer = setTimeout(() => {
           setShowMessage(false);
-          setTimeout(() => setIsVisible(false), 500);
         }, hideTime);
         
         return () => clearTimeout(timer);
@@ -78,7 +78,7 @@ const Mascot: React.FC<MascotProps> = ({
           role="status"
         >
           <p className="text-xs md:text-sm">{message}</p>
-          <div className="absolute bottom-[-10px] right-10 w-0 h-0 border-l-[10px] border-l-transparent border-t-[15px] border-t-white border-r-[10px] border-r-transparent"></div>
+          <div className="absolute bottom-[-8px] left-1/2 transform -translate-x-1/2 w-0 h-0 border-l-[8px] border-l-transparent border-t-[12px] border-t-white border-r-[8px] border-r-transparent"></div>
         </div>
       )}
       <div 

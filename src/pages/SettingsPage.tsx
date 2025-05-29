@@ -28,7 +28,6 @@ const SettingsPage: React.FC = () => {
       <div className="flex-1 overflow-y-auto space-y-6">
         <ProfileSection
           userEmail={settingsState.userEmail}
-          onEmailChange={settingsState.setUserEmail}
           onChangeProfile={settingsHandlers.handleChangeProfile}
         />
 
