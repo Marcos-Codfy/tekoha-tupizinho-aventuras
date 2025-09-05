@@ -63,15 +63,15 @@ export default {
 					ring: 'hsl(var(--sidebar-ring))'
 				},
 				tekoha: {
-					background: '#492F24', // Dark brown/chocolate background
-					secondary: '#27548A', // Light blue secondary color
-					highlight: '#F1B434', // Gold/yellow highlight color
-					interactive: '#F3F3E0', // Off-white text color
-					accent: '#F3F3E0', // Off-white hover color
-					teal: '#309898', // Green/teal color
-					black: '#000000', // Black text color
-					red: '#C5472B', // Orange-red color for buttons
-					green: '#BDBE30', // Lime green color for buttons
+					background: '#2A1A12', // Very dark chocolate brown
+					secondary: '#1E3A5F', // Deep navy blue
+					highlight: '#F1B434', // Vibrant gold
+					interactive: '#E6B84A', // Rich golden yellow
+					accent: '#4A7C7C', // Deep teal
+					teal: '#2D6B6B', // Darker teal
+					black: '#0F0A08', // Deep black-brown
+					red: '#C5472B', // Vibrant orange-red
+					green: '#8B9A2D', // Olive green
 				}
 			},
 			borderRadius: {
