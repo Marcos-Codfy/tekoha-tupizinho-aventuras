@@ -63,15 +63,16 @@ export default {
 					ring: 'hsl(var(--sidebar-ring))'
 				},
 				tekoha: {
-					background: '#2A1A12', // Very dark chocolate brown
-					secondary: '#1E3A5F', // Deep navy blue
-					highlight: '#F1B434', // Vibrant gold
-					interactive: '#E6B84A', // Rich golden yellow
-					accent: '#4A7C7C', // Deep teal
-					teal: '#2D6B6B', // Darker teal
-					black: '#0F0A08', // Deep black-brown
-					red: '#C5472B', // Vibrant orange-red
-					green: '#8B9A2D', // Olive green
+					background: '#1A1A1A', // Very dark gray
+					card: '#3A1F14', // Dark brown
+					primary: '#2386C8', // Blue
+					secondary: '#F9A12B', // Amber
+					accent: '#94BA00', // Green
+					highlight: '#D8D226', // Yellow
+					red: '#CF2A1C', // Red
+					orange: '#F26C1F', // Orange
+					white: '#FFFFFF', // White for details
+					interactive: '#FFFFFF', // White for interactive elements
 				}
 			},
 			borderRadius: {

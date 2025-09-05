@@ -10,16 +10,16 @@ const buttonVariants = cva(
   {
     variants: {
       variant: {
-        default: "bg-tekoha-red text-tekoha-interactive hover:bg-tekoha-red/90",
+        default: "bg-tekoha-primary text-tekoha-white hover:bg-tekoha-primary/90",
         destructive:
-          "bg-destructive text-destructive-foreground hover:bg-destructive/90",
+          "bg-tekoha-red text-tekoha-white hover:bg-tekoha-red/90",
         outline:
-          "border border-tekoha-highlight bg-transparent text-tekoha-highlight hover:bg-tekoha-red/20 hover:text-tekoha-interactive",
+          "border border-tekoha-highlight bg-transparent text-tekoha-highlight hover:bg-tekoha-accent/30 hover:text-tekoha-white",
         secondary:
-          "bg-tekoha-highlight text-tekoha-background hover:bg-tekoha-highlight/80",
-        ghost: "hover:bg-tekoha-red/20 hover:text-tekoha-interactive",
+          "bg-tekoha-secondary text-tekoha-background hover:bg-tekoha-secondary/80",
+        ghost: "hover:bg-tekoha-accent/20 hover:text-tekoha-white",
         link: "text-tekoha-highlight underline-offset-4 hover:underline",
-        green: "bg-tekoha-green text-tekoha-interactive hover:bg-tekoha-green/80",
+        accent: "bg-tekoha-accent text-tekoha-white hover:bg-tekoha-accent/80",
       },
       size: {
         default: "h-10 px-4 py-2",
