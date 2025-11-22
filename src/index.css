@@ -1,5 +1,4 @@
-
-@import url('https://fonts.googleapis.com/css2?family=Varela+Round&family=Comic+Neue:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -7,44 +6,40 @@
 
 @layer base {
   :root {
-    --background: 0 0% 10%; /* 1A1A1A - Very dark gray */
-    --foreground: 0 0% 100%; /* White for main text */
+    /* Duolingo-inspired color palette */
+    --background: 0 0% 98%;
+    --foreground: 0 0% 20%;
 
-    --card: 23 47% 16%; /* 3A1F14 - Dark brown */
-    --card-foreground: 0 0% 100%; /* White text */
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 20%;
 
-    --popover: 23 47% 16%; /* 3A1F14 - Dark brown */
-    --popover-foreground: 0 0% 100%; /* White text */
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 20%;
 
-    --primary: 207 67% 46%; /* 2386C8 - Blue */
-    --primary-foreground: 0 0% 100%; /* White text on blue */
+    --primary: 145 70% 45%; /* Green */
+    --primary-foreground: 0 0% 100%;
 
-    --secondary: 35 95% 57%; /* F9A12B - Amber */
-    --secondary-foreground: 0 0% 10%; /* Dark text on amber */
+    --secondary: 207 90% 54%; /* Blue */
+    --secondary-foreground: 0 0% 100%;
 
-    --muted: 23 47% 20%; /* Lighter version of dark brown */
-    --muted-foreground: 0 0% 80%; /* Light gray text */
+    --muted: 210 14% 96%;
+    --muted-foreground: 0 0% 45%;
 
-    --accent: 73 100% 36%; /* 94BA00 - Green */
-    --accent-foreground: 0 0% 100%; /* White text on green */
+    --accent: 35 100% 50%; /* Orange */
+    --accent-foreground: 0 0% 100%;
 
-    --destructive: 4 78% 46%; /* CF2A1C - Red */
-    --destructive-foreground: 0 0% 100%; /* White text on red */
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
 
-    --border: 60 71% 50%; /* D8D226 - Yellow for borders */
-    --input: 23 47% 16%; /* 3A1F14 - Dark brown input background */
-    --ring: 35 95% 57%; /* F9A12B - Amber focus ring */
+    --border: 0 0% 90%;
+    --input: 0 0% 90%;
+    --ring: 145 70% 45%;
 
     --radius: 1rem;
+  }
 
-    --sidebar-background: 0 0% 8%; /* Even darker gray */
-    --sidebar-foreground: 0 0% 100%; /* White text */
-    --sidebar-primary: 207 67% 46%; /* 2386C8 - Blue */
-    --sidebar-primary-foreground: 0 0% 100%; /* White text */
-    --sidebar-accent: 73 100% 36%; /* 94BA00 - Green */
-    --sidebar-accent-foreground: 0 0% 100%; /* White text */
-    --sidebar-border: 60 71% 50%; /* D8D226 - Yellow border */
-    --sidebar-ring: 35 95% 57%; /* F9A12B - Amber ring */
+  * {
+    @apply border-border;
   }
 
   html, body {
@@ -52,10 +47,7 @@
   }
 
   body {
-    @apply bg-tekoha-background text-tekoha-interactive font-rounded min-h-screen;
-    background-image: radial-gradient(circle at top left, rgba(35, 134, 200, 0.1) 0%, transparent 40%),
-                      radial-gradient(circle at bottom right, rgba(249, 161, 43, 0.1) 0%, transparent 40%);
-    background-attachment: fixed;
+    @apply bg-background text-foreground font-sans antialiased;
   }
 
   #root {
@@ -64,24 +56,12 @@
 }
 
 @layer components {
-  .tekoha-card {
-    @apply bg-tekoha-card/80 backdrop-blur-sm border-2 border-tekoha-highlight/30 rounded-2xl shadow-lg overflow-hidden text-tekoha-white;
-  }
-  
-  .tekoha-button {
-    @apply bg-tekoha-primary hover:bg-tekoha-primary/90 text-tekoha-white font-medium rounded-full py-2 md:py-3 px-4 md:px-6 transition-all duration-200 flex items-center justify-center gap-2 shadow-md hover:shadow-lg focus:ring-2 focus:ring-tekoha-secondary/50 focus:outline-none active:scale-95;
-  }
-  
-  .tekoha-button-outline {
-    @apply border-2 border-tekoha-highlight bg-transparent hover:bg-tekoha-accent/30 text-tekoha-highlight hover:text-tekoha-white font-medium rounded-full py-2 px-4 md:py-2.5 md:px-5 transition-all duration-200 active:scale-95;
-  }
-  
-  .tekoha-input {
-    @apply bg-tekoha-card/50 backdrop-blur-sm border-2 border-tekoha-highlight/30 rounded-xl p-2 md:p-3 focus:border-tekoha-secondary focus:outline-none focus:ring-2 focus:ring-tekoha-secondary/50 text-tekoha-white placeholder:text-tekoha-white/60;
+  .app-card {
+    @apply bg-card rounded-2xl shadow-sm border border-border p-6 transition-all duration-200 hover:shadow-md;
   }
   
   .profile-card {
-    @apply flex flex-col items-center justify-center gap-2 md:gap-3 bg-tekoha-card/50 hover:bg-tekoha-accent/30 p-3 md:p-5 rounded-xl transition-all duration-300 cursor-pointer border-2 border-transparent hover:border-tekoha-highlight active:scale-95;
+    @apply bg-card rounded-2xl p-6 border-2 border-border cursor-pointer transition-all duration-200 hover:border-primary hover:shadow-lg active:scale-[0.98];
   }
 
   .mascot-container {
@@ -89,61 +69,37 @@
   }
 
   .mascot-speech {
-    @apply bg-tekoha-white text-tekoha-background p-3 md:p-4 rounded-2xl shadow-lg max-w-xs relative animate-fade-in;
+    @apply bg-card text-foreground p-4 rounded-2xl shadow-lg max-w-xs relative border border-border;
   }
 
   .mascot-speech::before {
     content: '';
     position: absolute;
-    bottom: -12px;
-    left: 20px;
+    bottom: -10px;
+    left: 24px;
     width: 0;
     height: 0;
-    border-left: 12px solid transparent;
-    border-right: 12px solid transparent;
-    border-top: 12px solid white;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-top: 10px solid hsl(var(--card));
   }
 
   .content-container {
-    @apply w-full max-w-screen-xl mx-auto px-4 sm:px-6 md:px-8 pb-20 pt-4;
+    @apply w-full max-w-6xl mx-auto px-4 sm:px-6 pb-24 pt-4;
   }
 }
 
-/* Custom spinner styles */
 .loading-spinner {
-  width: 40px;
-  height: 40px;
+  width: 48px;
+  height: 48px;
+  border: 4px solid hsl(var(--muted));
+  border-top-color: hsl(var(--primary));
   border-radius: 50%;
-  background: conic-gradient(#0000 10%, #D8D226); /* Updated to yellow from palette */
-  -webkit-mask: radial-gradient(farthest-side,#0000 calc(100% - 8px),#000 0);
-  animation: spin 1s infinite linear;
-}
-
-@media (min-width: 768px) {
-  .loading-spinner {
-    width: 50px;
-    height: 50px;
-  }
+  animation: spin 0.8s linear infinite;
 }
 
 @keyframes spin {
   to {
-    transform: rotate(1turn);
+    transform: rotate(360deg);
   }
-}
-
-/* Animações do mascote */
-@keyframes mascot-appear {
-  from {
-    transform: translateY(20px);
-    opacity: 0;
-  }
-  to {
-    transform: translateY(0);
-    opacity: 1;
-  }
-}
-
-.animate-mascot-appear {
-  animation: mascot-appear 0.5s ease-out forwards;
 }

@@ -51,28 +51,6 @@ export default {
 				card: {
 					DEFAULT: 'hsl(var(--card))',
 					foreground: 'hsl(var(--card-foreground))'
-				},
-				sidebar: {
-					DEFAULT: 'hsl(var(--sidebar-background))',
-					foreground: 'hsl(var(--sidebar-foreground))',
-					primary: 'hsl(var(--sidebar-primary))',
-					'primary-foreground': 'hsl(var(--sidebar-primary-foreground))',
-					accent: 'hsl(var(--sidebar-accent))',
-					'accent-foreground': 'hsl(var(--sidebar-accent-foreground))',
-					border: 'hsl(var(--sidebar-border))',
-					ring: 'hsl(var(--sidebar-ring))'
-				},
-				tekoha: {
-					background: '#1A1A1A', // Very dark gray
-					card: '#3A1F14', // Dark brown
-					primary: '#2386C8', // Blue
-					secondary: '#F9A12B', // Amber
-					accent: '#94BA00', // Green
-					highlight: '#D8D226', // Yellow
-					red: '#CF2A1C', // Red
-					orange: '#F26C1F', // Orange
-					white: '#FFFFFF', // White for details
-					interactive: '#FFFFFF', // White for interactive elements
 				}
 			},
 			borderRadius: {
@@ -120,8 +98,7 @@ export default {
 				'slide-up': 'slide-up 0.6s ease-out forwards'
 			},
 			fontFamily: {
-				'rounded': ['Varela Round', 'sans-serif'],
-				'comic': ['Comic Neue', 'cursive']
+				sans: ['Nunito', 'system-ui', 'sans-serif']
 			},
 		}
 	},
