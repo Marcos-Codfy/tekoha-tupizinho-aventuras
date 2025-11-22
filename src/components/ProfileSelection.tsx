@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { UserCircle2, Stethoscope, BookOpen, GraduationCap, Heart, Users } from 'lucide-react';
+import { Stethoscope, BookOpen, GraduationCap, Users } from 'lucide-react';
 import Mascot from './Mascot';
-import BackButton from './BackButton';
+import { Button } from './ui/button';
 
 interface ProfileSelectionProps {
   onProfileSelect?: (profileId: string) => void;
@@ -17,34 +17,30 @@ const ProfileSelection: React.FC<ProfileSelectionProps> = ({ onProfileSelect }) 
     { 
       id: 'health', 
       name: 'Trabalhador da saúde', 
-      icon: <Stethoscope className="h-12 w-12 text-tekoha-interactive" aria-hidden="true" />,
+      icon: Stethoscope,
       message: 'Ajudando a cuidar da saúde de nossa comunidade!',
-      ariaLabel: 'Selecionar perfil de trabalhador da saúde',
-      bgColor: 'bg-tekoha-red'
+      color: 'text-destructive'
     },
     { 
       id: 'teacher', 
       name: 'Professor', 
-      icon: <BookOpen className="h-12 w-12 text-tekoha-interactive" aria-hidden="true" />,
+      icon: BookOpen,
       message: 'Compartilhando conhecimento e preservando nossa cultura!',
-      ariaLabel: 'Selecionar perfil de professor',
-      bgColor: 'bg-tekoha-red'
+      color: 'text-secondary'
     },
     { 
       id: 'student', 
       name: 'Estudante', 
-      icon: <GraduationCap className="h-12 w-12 text-tekoha-interactive" aria-hidden="true" />,
+      icon: GraduationCap,
       message: 'Aprendendo sobre nossa língua e tradições!',
-      ariaLabel: 'Selecionar perfil de estudante',
-      bgColor: 'bg-tekoha-highlight'
+      color: 'text-accent'
     },
     { 
       id: 'indigenous', 
       name: 'Indígena', 
-      icon: <Users className="h-12 w-12 text-tekoha-interactive" aria-hidden="true" />,
+      icon: Users,
       message: 'Porã! Bem-vindo de volta à sua comunidade!',
-      ariaLabel: 'Selecionar perfil indígena',
-      bgColor: 'bg-tekoha-green'
+      color: 'text-primary'
     }
   ];
 
@@ -52,62 +48,50 @@ const ProfileSelection: React.FC<ProfileSelectionProps> = ({ onProfileSelect }) 
     setSelectedProfile(profileId);
     setMascotMessage(message);
     
-    // Call the onProfileSelect callback if provided
     if (onProfileSelect) {
       onProfileSelect(profileId);
     }
     
-    // Delay navigation to show the mascot message
     setTimeout(() => {
       navigate('/home');
     }, 2000);
   };
 
   return (
-    <div className="min-h-screen flex flex-col p-6 bg-tekoha-background" role="main">
-      <div className="absolute top-6 left-6">
-        <BackButton to="/" />
-      </div>
-      
-      <div className="indigenous-border-top w-full mb-6"></div>
-      
-      <div className="flex-1 flex flex-col items-center justify-center">
-        <h1 className="text-3xl font-bold text-tekoha-highlight mb-10 text-center font-comic">
+    <div className="min-h-screen flex flex-col items-center justify-center p-6 bg-gradient-to-br from-primary/5 via-background to-accent/5">
+      <div className="w-full max-w-4xl">
+        <h1 className="text-4xl md:text-5xl font-extrabold text-center mb-4 text-foreground">
           Escolha seu Perfil
         </h1>
+        <p className="text-center text-muted-foreground mb-12 text-lg">
+          Personalize sua experiência de aprendizado
+        </p>
         
-        <div 
-          className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-3xl animate-fade-in"
-          role="group" 
-          aria-label="Opções de perfil"
-        >
-          {profiles.map((profile) => (
-            <div
-              key={profile.id}
-              className={`${profile.bgColor} rounded-xl p-4 shadow-md ${selectedProfile === profile.id ? 'border-2 border-tekoha-highlight shadow-lg scale-105' : 'border border-tekoha-red/50'}`}
-              onClick={() => handleProfileSelect(profile.id, profile.message)}
-              onKeyDown={(e) => {
-                if (e.key === 'Enter' || e.key === ' ') {
-                  handleProfileSelect(profile.id, profile.message);
-                }
-              }}
-              role="button"
-              tabIndex={0}
-              aria-label={profile.ariaLabel}
-              aria-selected={selectedProfile === profile.id}
-            >
-              <div className="flex items-center gap-3">
-                <div className="bg-tekoha-background/20 p-3 rounded-full">
-                  {profile.icon}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 animate-fade-in">
+          {profiles.map((profile) => {
+            const Icon = profile.icon;
+            const isSelected = selectedProfile === profile.id;
+            
+            return (
+              <button
+                key={profile.id}
+                className={`profile-card ${isSelected ? 'border-primary scale-105' : ''}`}
+                onClick={() => handleProfileSelect(profile.id, profile.message)}
+                aria-label={`Selecionar perfil de ${profile.name}`}
+              >
+                <div className="flex items-center gap-4">
+                  <div className={`p-4 rounded-2xl bg-muted ${profile.color}`}>
+                    <Icon className="h-10 w-10" />
+                  </div>
+                  <div className="flex-1 text-left">
+                    <p className="text-xl font-bold text-foreground">{profile.name}</p>
+                  </div>
                 </div>
-                <p className="text-tekoha-interactive text-xl font-bold">{profile.name}</p>
-              </div>
-            </div>
-          ))}
+              </button>
+            );
+          })}
         </div>
       </div>
-      
-      <div className="indigenous-border-bottom w-full mt-6"></div>
       
       <Mascot 
         position="center" 
